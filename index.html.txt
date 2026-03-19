@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曾诗雅 - 国际经济与贸易个人简历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* 顶部导航/个人信息栏 */
+        .header {
+            background-color: #165DFF;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .header .info {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        .header .info a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .header .info a:hover {
+            text-decoration: underline;
+        }
+        /* 主体容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 30px;
+        }
+        /* 侧边栏（技能/证书/个人评价） */
+        .sidebar {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .sidebar .module {
+            margin-bottom: 30px;
+        }
+        .sidebar .module h2 {
+            font-size: 1.3rem;
+            color: #165DFF;
+            border-left: 4px solid #165DFF;
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+        .sidebar .skill-list, .cert-list {
+            list-style: none;
+        }
+        .sidebar .skill-list li {
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .sidebar .skill-list li span {
+            color: #666;
+        }
+        .sidebar .eval p {
+            color: #666;
+            line-height: 1.8;
+            text-indent: 2em;
+        }
+        /* 主内容区（教育/项目/实践） */
+        .main {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .main .module {
+            margin-bottom: 40px;
+        }
+        .main .module h2 {
+            font-size: 1.5rem;
+            color: #165DFF;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .main .item {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 2px solid #165DFF;
+        }
+        .main .item .title {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .main .item .title .time {
+            color: #165DFF;
+            font-weight: normal;
+        }
+        .main .item .sub-title {
+            color: #666;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .main .item p {
+            color: #333;
+            line-height: 1.8;
+        }
+        .main .item ul {
+            margin-left: 20px;
+            color: #333;
+            line-height: 1.8;
+        }
+        /* 响应式适配（平板/手机） */
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .header {
+                padding: 25px 10px;
+            }
+            .container {
+                padding: 20px 10px;
+            }
+            .sidebar, .main {
+                padding: 20px;
+            }
+            .main .item .title {
+                flex-direction: column;
+            }
+        }
+        /* 悬浮动画 */
+        .module {
+            transition: all 0.3s ease;
+        }
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(22,93,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部个人信息 -->
+    <header class="header">
+        <h1>曾诗雅</h1>
+        <div class="info">
+            <p>专业：国际经济与贸易 | 学历：大学本科 | 现居地：广东省广州市</p>
+            <p>到岗时间：一周内 | 电话：<a href="tel:16769902045">16769902045</a> | 邮箱：<a href="mailto:shiloh16769902045@163.com">shiloh16769902045@163.com</a></p>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <!-- 专业技能 -->
+            <div class="module">
+                <h2>专业技能</h2>
+                <ul class="skill-list">
+                    <li>办公软件 <span>熟练（Word/Excel/PPT/Outlook）</span></li>
+                    <li>数据处理 <span>SPSS/VOSviewer 可视化</span></li>
+                    <li>设计剪辑 <span>剪映/PS/CDR/Canva</span></li>
+                    <li>专业能力 <span>外贸单证/市场调研/SWOT分析</span></li>
+                    <li>跨境电商 <span>平台运营/社媒营销/选品上架</span></li>
+                    <li>英语能力 <span>四级/BEC中级/外贸英语函电</span></li>
+                </ul>
+            </div>
+            <!-- 证书奖项 -->
+            <div class="module">
+                <h2>证书奖项</h2>
+                <ul class="cert-list">
+                    <li>大学英语四级证书</li>
+                    <li>全国高校商业精英挑战赛国际贸易竞赛 二等奖</li>
+                    <li>OCALE全国跨境电商创新创业能力大赛 院校前32%</li>
+                    <li>全国高校商务外语综合能力大赛 校赛晋级</li>
+                </ul>
+            </div>
+            <!-- 综合评价 -->
+            <div class="module eval">
+                <h2>综合评价</h2>
+                <p>沉稳专注，细节把控力强，执行高效，在各类外贸实操与竞赛中实现零差错交付，具备扎实的国贸专业实操能力。</p>
+                <p style="margin-top:10px;">善于倾听，沟通精准，跨文化适配度高，可高效完成团队协作与商务对接工作。</p>
+                <p style="margin-top:10px;">坚韧抗压，适应加班出差，遇事冷静靠谱，具备良好的职业素养与应变能力。</p>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main">
+            <!-- 教育经历 -->
+            <div class="module">
+                <h2>教育经历</h2>
+                <div class="item">
+                    <div class="title">
+                        <span>广州华商学院</span>
+                        <span class="time">2024.09 - 2026.06</span>
+                    </div>
+                    <div class="sub-title">国际经济与贸易 | 本科</div>
+                    <p>核心课程：国际结算、BEC中级英语、外贸英语函电、国际贸易与实务、跨境电子商务英语等</p>
+                </div>
+            </div>
+            <!-- 项目经验 -->
+            <div class="module">
+                <h2>项目经验</h2>
+                <div class="item">
+                    <div class="title">
+                        <span>全国高校商业精英挑战赛国际贸易竞赛</span>
+                        <span class="time">2025.04.25 | 二等奖 | 核心成员</span>
+                    </div>
+                    <ul>
+                        <li>协作完成东南亚电子消费品市场调研，运用SWOT分析法锁定目标产品；</li>
+                        <li>按UCP600规则制作审核10余种外贸单证，实现零差错；</li>
+                        <li>配合队友制定3套谈判预案，敲定混合付款方案；</li>
+                        <li>助力团队在200余所高校、800余支队伍的竞争中斩获全国二等奖，提升外贸实务与团队协作能力。</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        <span>OCALE全国跨境电商创新创业能力大赛</span>
+                        <span class="time">2025.04 | 项目成员</span>
+                    </div>
+                    <ul>
+                        <li>参与3天12回合跨境电商模拟运营，负责选品与社媒营销模块，完成17款品类的市场调研与上架；</li>
+                        <li>调整KOL投放比例（22%→35%），品牌曝光量提升42%，店铺点击率提升27%；</li>
+                        <li>协同团队优化虚拟资金周转效率，库存周转天数从8天压缩至5天；</li>
+                        <li>团队总运营得分位列参赛院校前32%。</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        <span>全国高校商务外语综合能力大赛（短视频作品赛项）</span>
+                        <span class="time">2025.06 | 校赛晋级 | 核心成员</span>
+                    </div>
+                    <ul>
+                        <li>在全校200余人、20余组竞争中，负责英文脚本撰写、产品卖点提炼及视频制作全流程；</li>
+                        <li>结合国贸知识优化英文表达与推广逻辑，以约7%晋级率成功突围；</li>
+                        <li>夯实商务英语应用与跨境内容创作能力。</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 实践经验 -->
+            <div class="module">
+                <h2>实践经验</h2>
+                <div class="item">
+                    <div class="title">
+                        <span>跨境物流模拟仿真实训</span>
+                        <span class="time">货代操作专员</span>
+                    </div>
+                    <ul>
+                        <li>参与校级货代公司全流程模拟，负责订舱、单证制作与货物追踪，目标实现订单零差错履约；</li>
+                        <li>运用Incoterms规范对接虚拟船司与客户，优化订舱与单证审核流程，缩短处理时效15%；</li>
+                        <li>累计处理模拟订单50+票，订舱准确率、单证通过率均达100%，助力团队降低模拟物流成本8%。</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        <span>汕尾市大学生志愿服务活动</span>
+                        <span class="time">会务志愿者</span>
+                    </div>
+                    <ul>
+                        <li>协助市级会议筹备，负责流程衔接、80+嘉宾签到引导及物料统筹；</li>
+                        <li>梳理时间节点，核对信息并协同布置会场；</li>
+                        <li>实现签到与物料分发零差错，保障会议高效有序完成，提升统筹协调与应变能力。</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 页面滚动渐入效果
+        window.addEventListener('scroll', function() {
+            const modules = document.querySelectorAll('.module');
+            modules.forEach(module => {
+                const top = module.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) {
+                    module.style.opacity = 1;
+                    module.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        // 初始化
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
