@@ -3,245 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曾诗雅 - 个人简历</title>
+    <title>曾诗雅 | 个人主页 & 作品集</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #f0f4ff 0%, #e0ecff 100%);
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f8f9ff;
             color: #333;
             line-height: 1.7;
-            padding-bottom: 60px;
         }
 
-        /* 顶部卡片 */
-        .top-card {
-            background: linear-gradient(90deg, #2c52d6, #4a88f4);
+        /* 导航栏 */
+        nav {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #4a88f4;
+        }
+
+        /* 顶部个人区域 */
+        .hero {
+            background: linear-gradient(90deg,#4a88f4,#2c52d6);
             color: white;
             text-align: center;
-            padding: 50px 20px 35px;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            box-shadow: 0 8px 30px rgba(44, 82, 214, 0.15);
+            padding: 70px 20px;
+            border-radius: 0 0 40px 40px;
         }
-
         .avatar {
             width: 140px;
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 18px;
+            border: 4px solid rgba(255,255,255,0.3);
+            margin-bottom: 20px;
         }
-
-        .top-card h1 {
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 8px;
+        .hero h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
         }
-
-        .top-card .info {
-            font-size: 15px;
+        .hero p {
+            font-size: 16px;
             opacity: 0.95;
-            line-height: 1.8;
-        }
-
-        .top-card a {
-            color: white;
-            text-decoration: none;
         }
 
         /* 内容容器 */
         .container {
-            max-width: 900px;
-            margin: -35px auto 0;
+            max-width: 1000px;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* 白色卡片模块 */
-        .card {
-            background: white;
-            border-radius: 18px;
-            padding: 28px;
-            margin-bottom: 22px;
-            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h2 {
-            font-size: 19px;
-            color: #2c52d6;
-            margin-bottom: 18px;
+        /* 模块标题 */
+        .section-title {
+            font-size: 22px;
+            margin: 50px 0 25px;
             padding-left: 12px;
             border-left: 5px solid #4a88f4;
-            font-weight: 600;
-        }
-
-        /* 列表样式 */
-        .card ul {
-            list-style: none;
-        }
-
-        .card li {
-            margin-bottom: 10px;
-            padding-left: 18px;
-            position: relative;
-        }
-
-        .card li::before {
-            content: "•";
-            color: #4a88f4;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        /* 经历条目 */
-        .item {
-            margin-bottom: 22px;
-        }
-
-        .item .title {
-            font-weight: bold;
-            font-size: 16px;
             color: #222;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
         }
 
-        .item .time {
-            color: #4a88f4;
-            font-weight: normal;
-            font-size: 14px;
+        /* 卡片样式 */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
-        .item .sub {
+        /* 作品集网格（最重要！） */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .portfolio-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .portfolio-item img,
+        .portfolio-item video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .portfolio-item .info {
+            padding: 15px;
+        }
+        .portfolio-item .title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 40px;
             color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: #444;
+            background: white;
+            margin-top: 60px;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- 顶部卡片 -->
-    <div class="top-card">
-        <img src="avatar.jpg" class="avatar" alt="头像">
-        <h1>曾诗雅</h1>
-        <div class="info">
-            国际经济与贸易 | 本科 | 广州
-            <br>
-            电话：<a href="tel:16769902045">16769902045</a>
-            邮箱：<a href="mailto:shiloh16769902045@163.com">shiloh16769902045@163.com</a>
-        </div>
+<!-- 导航 -->
+<nav>
+    <a href="#home">首页</a>
+    <a href="#about">关于我</a>
+    <a href="#portfolio">作品集</a>
+    <a href="#projects">项目经历</a>
+    <a href="#contact">联系我</a>
+</nav>
+
+<!-- 顶部个人介绍 -->
+<section class="hero" id="home">
+    <img src="avatar.jpg" class="avatar" alt="头像">
+    <h1>曾诗雅</h1>
+    <p>国际经济与贸易 | 创作者 | 作品集个人主页</p>
+</section>
+
+<div class="container">
+
+    <!-- 关于我 -->
+    <h2 class="section-title" id="about">关于我</h2>
+    <div class="card">
+        <p>沉稳专注，细节把控力强，具备扎实的国贸专业能力。</p>
+        <p style="margin-top:10px;">热爱设计、创作、新媒体，持续输出个人作品与项目经验。</p>
     </div>
 
-    <!-- 内容区 -->
-    <div class="container">
+    <!-- 作品集（你以后所有图片/视频/音频都放这里） -->
+    <h2 class="section-title" id="portfolio">作品集</h2>
+    <div class="portfolio-grid">
 
-        <div class="card">
-            <h2>专业技能</h2>
-            <ul>
-                <li>办公软件：Word / Excel / PPT / Outlook 熟练</li>
-                <li>数据处理：SPSS、VOSviewer 可视化分析</li>
-                <li>设计剪辑：剪映、PS、CDR、Canva</li>
-                <li>专业能力：外贸单证、市场调研、SWOT 分析</li>
-                <li>跨境电商：平台运营、社媒营销、选品上架</li>
-                <li>英语能力：四级、BEC 中级、外贸英语函电</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>证书奖项</h2>
-            <ul>
-                <li>大学英语四级证书</li>
-                <li>全国高校商业精英挑战赛国际贸易竞赛 二等奖</li>
-                <li>OCALE 全国跨境电商创新创业能力大赛 院校前 32%</li>
-                <li>全国高校商务外语综合能力大赛 校赛晋级</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>教育经历</h2>
-            <div class="item">
-                <div class="title">
-                    <span>广州华商学院</span>
-                    <span class="time">2024.09 - 2026.06</span>
-                </div>
-                <div class="sub">国际经济与贸易 | 本科</div>
-                <p>核心课程：国际结算、BEC 中级、外贸英语函电、国际贸易实务、跨境电商英语等</p>
+        <!-- 作品1：图片 -->
+        <div class="portfolio-item">
+            <img src="https://via.placeholder.com/400x200/4a88f4/white" alt="作品">
+            <div class="info">
+                <div class="title">作品标题</div>
+                <p>图片/设计作品</p>
             </div>
         </div>
 
-        <div class="card">
-            <h2>项目经验</h2>
-            <div class="item">
-                <div class="title">全国高校商业精英挑战赛国际贸易竞赛</div>
-                <div class="sub">二等奖 | 核心成员</div>
-                <ul>
-                    <li>完成东南亚市场调研，运用 SWOT 分析锁定产品</li>
-                    <li>按 UCP600 制作审核 10+ 外贸单证，零差错</li>
-                    <li>参与谈判预案，助力团队获全国二等奖</li>
-                </ul>
-            </div>
-            <div class="item">
-                <div class="title">OCALE 全国跨境电商创新创业能力大赛</div>
-                <div class="sub">项目成员</div>
-                <ul>
-                    <li>负责选品、社媒营销，完成 17 款品类上架</li>
-                    <li>优化投放策略，品牌曝光提升 42%</li>
-                    <li>团队成绩位列院校前 32%</li>
-                </ul>
+        <!-- 作品2：视频 -->
+        <div class="portfolio-item">
+            <video controls>
+                <source src="#" type="video/mp4">
+            </video>
+            <div class="info">
+                <div class="title">视频作品</div>
+                <p>可直接播放</p>
             </div>
         </div>
 
-        <div class="card">
-            <h2>实践经历</h2>
-            <div class="item">
-                <div class="title">跨境物流模拟仿真实训</div>
-                <div class="sub">货代操作专员</div>
-                <ul>
-                    <li>负责订舱、单证制作、货物追踪，处理订单 50+</li>
-                    <li>流程优化提升效率 15%，准确率 100%</li>
-                </ul>
+        <!-- 作品3：音频 -->
+        <div class="portfolio-item">
+            <img src="https://via.placeholder.com/400x200/2c52d6/white" alt="音频封面">
+            <div class="info">
+                <audio controls style="width:100%;margin-top:5px;"></audio>
+                <div class="title">音频作品</div>
             </div>
-            <div class="item">
-                <div class="title">汕尾市大学生志愿服务活动</div>
-                <div class="sub">会务志愿者</div>
-                <ul>
-                    <li>负责嘉宾签到、流程衔接、物料统筹</li>
-                    <li>服务 80+ 嘉宾，零差错完成任务</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>综合评价</h2>
-            <p>沉稳专注，细节把控力强，执行高效，具备扎实的国贸专业能力。</p>
-            <br>
-            <p>善于沟通，团队协作意识强，能快速适应职场节奏与出差加班。</p>
-            <br>
-            <p>学习能力突出，做事靠谱有韧性，职业素养良好。</p>
         </div>
 
     </div>
+
+    <!-- 项目经历 -->
+    <h2 class="section-title" id="projects">项目经历</h2>
+    <div class="card">
+        <h3>全国高校商业精英挑战赛</h3>
+        <p style="color:#666;margin:5px 0 10px;">二等奖 | 核心成员</p>
+        <p>完成市场调研、外贸单证、商务谈判，获全国二等奖。</p>
+    </div>
+    <div class="card">
+        <h3>OCALE跨境电商大赛</h3>
+        <p style="color:#666;margin:5px 0 10px;">院校前32%</p>
+        <p>负责选品、社媒营销、店铺运营，提升品牌曝光42%。</p>
+    </div>
+
+    <!-- 联系我 -->
+    <h2 class="section-title" id="contact">联系我</h2>
+    <div class="card">
+        <p>邮箱：shiloh16769902045@163.com</p>
+        <p>电话：16769902045</p>
+    </div>
+
+</div>
+
+<!-- 底部 -->
+<footer>
+    © 2026 曾诗雅 | 个人作品集网站
+</footer>
 
 </body>
 </html>
