@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* 动态导航 */
+        /* 动态导航（吸顶+模糊） */
         nav {
             position: fixed;
             top: 0;
@@ -47,7 +47,7 @@
             transform: translateY(-2px);
         }
 
-        /* 动态顶部区域 */
+        /* 动态顶部区域（渐变+动画） */
         .hero {
             background: linear-gradient(90deg, #4a88f4, #2c52d6);
             color: white;
@@ -76,14 +76,20 @@
             margin-bottom: 10px;
         }
 
-        /* 动态容器 */
+        .hero p {
+            opacity: 0.95;
+            font-size: 15px;
+            margin: 5px 0;
+        }
+
+        /* 动态容器（自适应宽度） */
         .container {
             max-width: 1000px;
             margin: 50px auto;
             padding: 0 20px;
         }
 
-        /* 模块标题（动态） */
+        /* 模块容器（滚动淡入动画） */
         .section {
             opacity: 0;
             transform: translateY(40px);
@@ -96,6 +102,7 @@
             transform: translateY(0);
         }
 
+        /* 模块标题（左侧蓝条+统一风格） */
         .title {
             font-size: 22px;
             margin: 20px 0 25px;
@@ -103,7 +110,7 @@
             border-left: 5px solid #4a88f4;
         }
 
-        /* 动态卡片 */
+        /* 动态卡片（悬浮上浮+阴影变化） */
         .card {
             background: white;
             border-radius: 20px;
@@ -118,7 +125,51 @@
             box-shadow: 0 12px 30px rgba(0,0,0,0.09);
         }
 
-        /* 动态证书墙 */
+        /* 列表样式（统一项目符号+间距） */
+        .card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "•";
+            color: #4a88f4;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 项目/实践条目（标题+时间/副标题分离） */
+        .item {
+            margin-bottom: 24px;
+        }
+
+        .item .title-row {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .item .time {
+            color: #4a88f4;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .item .sub {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        /* 证书展示区（网格布局+占位） */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -129,50 +180,53 @@
             border-radius: 16px;
             overflow: hidden;
             transition: 0.3s;
-        }
-
-        .cert img {
-            width: 100%;
+            background: #f8f9ff;
             height: 150px;
-            object-fit: cover;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
         }
 
         .cert:hover {
             transform: scale(1.05);
         }
 
-        /* 动态作品展示 */
+        /* 作品集展示区（网格布局+占位） */
         .portfolio {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        .item {
-            background: white;
+        .portfolio-item {
+            background: #f8f9ff;
             border-radius: 18px;
             overflow: hidden;
             transition: 0.3s;
-        }
-
-        .item img, .item video {
-            width: 100%;
             height: 200px;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
         }
 
-        .item:hover {
+        .portfolio-item:hover {
             transform: translateY(-6px);
         }
 
+        /* 页脚（统一风格） */
         footer {
             text-align: center;
             padding: 50px 20px;
             color: #666;
             background: white;
+            margin-top: 50px;
         }
 
+        /* 全局动画 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -182,81 +236,193 @@
 
 <body>
 
+<!-- 导航栏（锚点对应所有模块） -->
 <nav>
     <a href="#home">首页</a>
     <a href="#about">关于我</a>
-    <a href="#skill">技能</a>
-    <a href="#cert">证书</a>
-    <a href="#project">项目</a>
+    <a href="#skill">专业技能</a>
+    <a href="#education">教育经历</a>
+    <a href="#project">项目经验</a>
+    <a href="#practice">实践经验</a>
+    <a href="#cert">证书展示</a>
     <a href="#portfolio">作品集</a>
+    <a href="#evaluation">综合评价</a>
 </nav>
 
+<!-- 顶部英雄区（完整个人基础信息） -->
 <section class="hero" id="home">
-    <img src="avatar.jpg" class="avatar" alt="头像">
+    <img src="avatar.jpg" class="avatar" alt="曾诗雅头像">
     <h1>曾诗雅</h1>
-    <p>国际经济与贸易 | 创作者 | 动态个人主页</p>
+    <p>国际经济与贸易 | 本科 | 广州</p>
+    <p>电话：16769902045 | 邮箱：shiloh16769902045@163.com</p>
 </section>
 
+<!-- 内容容器 -->
 <div class="container">
 
+    <!-- 关于我模块（保留原信息） -->
     <section class="section" id="about">
         <h2 class="title">关于我</h2>
         <div class="card">
-            <p>沉稳专注，细节把控力强，具备扎实的国贸专业能力。</p>
-            <p style="margin-top:10px;">热爱创作、设计、新媒体，持续打造个人作品与实战项目。</p>
+            <p>沉稳专注，细节把控力强，执行高效，具备扎实的国贸专业能力。</p>
+            <p style="margin-top:10px;">热爱创作、设计与新媒体运营，持续通过实战项目积累跨境电商、外贸单证、市场调研等领域的经验，目标成为兼具专业能力与创意能力的复合型国贸人才。</p>
         </div>
     </section>
 
+    <!-- 专业技能模块（100%恢复原6项细节） -->
     <section class="section" id="skill">
         <h2 class="title">专业技能</h2>
         <div class="card">
-            <li>办公软件：Word / Excel / PPT 熟练</li>
-            <li>设计剪辑：剪映、PS、Canva</li>
-            <li>外贸能力：单证、市场调研、跨境运营</li>
-            <li>英语能力：四级、BEC 中级</li>
+            <ul>
+                <li>办公软件：Word / Excel / PPT / Outlook 熟练</li>
+                <li>数据处理：SPSS、VOSviewer 可视化分析</li>
+                <li>设计剪辑：剪映、PS、CDR、Canva</li>
+                <li>专业能力：外贸单证、市场调研、SWOT 分析</li>
+                <li>跨境电商：平台运营、社媒营销、选品上架</li>
+                <li>英语能力：四级、BEC 中级、外贸英语函电</li>
+            </ul>
         </div>
     </section>
 
-    <section class="section" id="cert">
-        <h2 class="title">证书展示（动态）</h2>
-        <div class="cert-grid">
-            <div class="cert"><img src="cert1.jpg" alt="证书"></div>
-            <div class="cert"><img src="cert2.jpg" alt="证书"></div>
-            <div class="cert"><img src="cert3.jpg" alt="证书"></div>
-            <div class="cert"><img src="cert4.jpg" alt="证书"></div>
+    <!-- 教育经历模块（100%恢复原细节） -->
+    <section class="section" id="education">
+        <h2 class="title">教育经历</h2>
+        <div class="card">
+            <div class="item">
+                <div class="title-row">
+                    <span>广州华商学院</span>
+                    <span class="time">2024.09 - 2026.06</span>
+                </div>
+                <div class="sub">国际经济与贸易 | 本科</div>
+                <p>核心课程：国际结算、BEC 中级、外贸英语函电、国际贸易实务、跨境电商英语等</p>
+            </div>
         </div>
     </section>
 
+    <!-- 项目经验模块（100%恢复原2个项目的所有细节） -->
     <section class="section" id="project">
         <h2 class="title">项目经验</h2>
-        <div class="card">全国高校商业精英挑战赛 — 二等奖</div>
-        <div class="card">OCALE跨境电商大赛 — 院校前32%</div>
+        <div class="card">
+            <div class="item">
+                <div class="title-row">
+                    <span>全国高校商业精英挑战赛</span>
+                    <span class="time">2025.03 - 2025.06</span>
+                </div>
+                <div class="sub">二等奖 | 核心成员</div>
+                <ul>
+                    <li>完成东南亚市场调研，运用 SWOT 分析锁定产品</li>
+                    <li>按 UCP600 制作审核 10+ 外贸单证，零差错</li>
+                    <li>参与谈判预案，助力团队获全国二等奖</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="title-row">
+                    <span>OCALE 跨境电商创新创业大赛</span>
+                    <span class="time">2025.09 - 2025.12</span>
+                </div>
+                <div class="sub">项目成员</div>
+                <ul>
+                    <li>负责选品、社媒营销，完成 17 款品类上架</li>
+                    <li>优化投放策略，品牌曝光提升 42%</li>
+                    <li>团队成绩位列院校前 32%</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
+    <!-- 实践经验模块（100%恢复原2个实践的所有细节） -->
+    <section class="section" id="practice">
+        <h2 class="title">实践经验</h2>
+        <div class="card">
+            <div class="item">
+                <div class="title-row">
+                    <span>跨境物流模拟仿真实训</span>
+                    <span class="time">2025.07 - 2025.08</span>
+                </div>
+                <div class="sub">货代操作专员</div>
+                <ul>
+                    <li>负责订舱、单证制作、货物追踪，处理订单 50+</li>
+                    <li>流程优化提升效率 15%，准确率 100%</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="title-row">
+                    <span>汕尾市大学生志愿服务</span>
+                    <span class="time">2025.02 - 2025.03</span>
+                </div>
+                <div class="sub">会务志愿者</div>
+                <ul>
+                    <li>负责嘉宾签到、流程衔接、物料统筹</li>
+                    <li>服务 80+ 嘉宾，零差错完成任务</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 证书展示区（占位，等你提供内容后替换） -->
+    <section class="section" id="cert">
+        <h2 class="title">证书与获奖证明</h2>
+        <div class="cert-grid">
+            <div class="cert">证书1占位（待替换）</div>
+            <div class="cert">证书2占位（待替换）</div>
+            <div class="cert">证书3占位（待替换）</div>
+            <div class="cert">证书4占位（待替换）</div>
+        </div>
+    </section>
+
+    <!-- 作品集展示区（占位，支持图片/视频/音频，等你提供内容后替换） -->
     <section class="section" id="portfolio">
-        <h2 class="title">作品集（可放图片/视频/音频）</h2>
+        <h2 class="title">个人作品集</h2>
         <div class="portfolio">
-            <div class="item"><img src="https://picsum.photos/600/400"></div>
-            <div class="item"><img src="https://picsum.photos/600/401"></div>
-            <div class="item"><img src="https://picsum.photos/600/402"></div>
+            <div class="portfolio-item">图片作品1占位</div>
+            <div class="portfolio-item">视频作品1占位</div>
+            <div class="portfolio-item">音频作品1占位</div>
+        </div>
+    </section>
+
+    <!-- 综合评价模块（100%恢复原3段内容） -->
+    <section class="section" id="evaluation">
+        <h2 class="title">综合评价</h2>
+        <div class="card">
+            <p>沉稳专注，细节把控力强，执行高效，具备扎实的国贸专业能力。</p>
+            <br>
+            <p>善于沟通，团队协作意识强，能快速适应职场节奏与出差加班。</p>
+            <br>
+            <p>学习能力突出，做事靠谱有韧性，职业素养良好。</p>
         </div>
     </section>
 
 </div>
 
-<footer>© 2026 曾诗雅 — 动态个人网站</footer>
+<!-- 页脚 -->
+<footer>© 2026 曾诗雅 | 个人动态主页</footer>
 
+<!-- 核心动态效果脚本（滚动淡入+导航交互） -->
 <script>
-    // 核心动态效果：滚动自动动画
+    // 滚动时自动触发模块淡入动画
     const sections = document.querySelectorAll('.section');
-    window.addEventListener('scroll', () => {
-        sections.forEach(sec => {
-            const top = sec.getBoundingClientRect().top;
-            if (top < window.innerHeight - 100) sec.classList.add('show');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
         });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // 导航栏滚动效果（可选：滚动时缩小 padding）
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.style.padding = '12px 0';
+        } else {
+            nav.style.padding = '18px 0';
+        }
     });
-    window.dispatchEvent(new Event('scroll'));
 </script>
 
+</body>
+</html>
 </body>
 </html>
