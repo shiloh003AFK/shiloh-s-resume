@@ -23,7 +23,7 @@
             padding: 40px 20px;
             text-align: center;
         }
-        /* 头像样式 */
+        /* 头像样式（绝对适配） */
         .avatar {
             width: 140px;
             height: 140px;
@@ -32,6 +32,8 @@
             margin-bottom: 15px;
             object-fit: cover;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            /* 兜底：加载失败不显示占位符 */
+            background: transparent;
         }
         .header h1 {
             font-size: 2.2rem;
@@ -173,8 +175,8 @@
 <body>
     <!-- 顶部个人信息 -->
     <header class="header">
-        <!-- 头像代码 -->
-        <img src="你的照片名字.png" alt="个人头像" class="avatar">
+        <!-- 替换成你的图片直链即可 -->
+        <img src="https://raw.githubusercontent.com/shiloh003afk/shiloh-s-resume/main/avatar.jpg" alt="个人头像" class="avatar">
         <h1>曾诗雅</h1>
         <div class="info">
             <p>专业：国际经济与贸易 | 学历：大学本科 | 现居地：广东省广州市</p>
