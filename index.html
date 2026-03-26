@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曾诗雅 | 个人主页</title>
+    <title>曾诗雅 | 跨境电商·外贸个人主页</title>
     <style>
         * {
             margin: 0;
@@ -12,92 +12,123 @@
             scroll-behavior: smooth;
         }
 
+        /* 全局：跨境电商外贸高级字体 + 背景 */
         body {
-            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: #F8F9FC;
-            color: #444;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            /* 👇 替换为你的9:16倒置背景图 */
+            background: url("background.jpg") center/cover fixed;
+            background-color: #F0F4FF;
+            color: #2A2A2A;
             line-height: 1.8;
-            animation: pageLoad 1s ease forwards;
-            opacity: 0;
+            position: relative;
         }
 
-        @keyframes pageLoad {
-            to { opacity: 1; }
+        /* 半透磨砂遮罩（保证文字清晰，高级外贸质感） */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(6px);
+            z-index: -1;
         }
 
-        /* 导航 */
+        /* 导航栏：外贸磨砂悬浮款 */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(10px);
-            padding: 16px 0;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            padding: 18px 0;
             text-align: center;
             z-index: 999;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 20px rgba(22,93,255,0.08);
+            border-bottom: 1px solid rgba(22,93,255,0.1);
         }
 
         nav a {
-            margin: 0 10px;
+            margin: 0 12px;
             text-decoration: none;
-            color: #666;
+            color: #444;
             font-size: 15px;
+            font-weight: 500;
             transition: 0.3s;
+            position: relative;
         }
 
+        /* 导航灵动动画（不呆板） */
         nav a:hover {
-            color: #7BA3FF;
+            color: #165DFF;
+        }
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #165DFF;
+            transition: 0.3s;
+            transform: translateX(-50%);
+        }
+        nav a:hover::after {
+            width: 80%;
         }
 
-        /* 顶部 */
+        /* 顶部英雄区：跨境电商商务风 */
         .hero {
-            background: linear-gradient(135deg, #E8F0FF 0%, #F0F5FF 100%);
             text-align: center;
-            padding: 100px 20px 70px;
-            border-radius: 0 0 40px 40px;
+            padding: 120px 20px 80px;
             margin-bottom: 50px;
+            position: relative;
         }
 
         .avatar {
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            background: #fff;
+            border: 3px solid #fff;
+            box-shadow: 0 8px 25px rgba(22,93,255,0.15);
             margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(120,160,255,0.1);
-            animation: avatarFloat 3.5s ease-in-out infinite;
+            animation: avatarFloat 3s ease-in-out infinite;
         }
 
+        /* 头像灵动浮动 */
         @keyframes avatarFloat {
             0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-8px); }
         }
 
         .hero h1 {
-            font-size: 26px;
-            color: #3A3A3A;
+            font-size: 28px;
+            color: #165DFF;
+            font-weight: 600;
             margin-bottom: 8px;
         }
 
         .hero p {
-            color: #666;
+            color: #555;
             font-size: 15px;
+            font-weight: 400;
         }
 
         /* 容器 */
         .container {
-            max-width: 860px;
+            max-width: 880px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* 模块动画 */
+        /* 模块滚动动画 */
         .section {
             opacity: 0;
-            transform: translateY(30px);
-            transition: 0.8s ease;
+            transform: translateY(40px);
+            transition: 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             margin-bottom: 50px;
         }
 
@@ -106,27 +137,32 @@
             transform: translateY(0);
         }
 
+        /* 标题：外贸质感 + 蛇形简约装饰 */
         .title {
-            font-size: 20px;
-            color: #444;
-            margin-bottom: 20px;
-            padding-left: 12px;
-            border-left: 3px solid #A1BFFF;
+            font-size: 21px;
+            color: #2A2A2A;
+            margin-bottom: 22px;
+            padding-left: 14px;
+            border-left: 3px solid #165DFF;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        /* 卡片 */
+        /* 卡片：跨境电商柔边高级款 */
         .card {
-            background: white;
-            border-radius: 20px;
-            padding: 26px;
-            margin-bottom: 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: 0.35s ease;
+            background: #fff;
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 20px rgba(22,93,255,0.06);
+            transition: 0.4s ease;
+            border: 1px solid rgba(22,93,255,0.05);
         }
 
+        /* 卡片悬停动画（灵动不呆板） */
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(120,160,255,0.08);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(22,93,255,0.12);
         }
 
         .card ul {
@@ -140,101 +176,64 @@
             position: relative;
         }
 
+        /* 外贸专属项目符号 */
         .card li::before {
-            content: "•";
-            color: #A1BFFF;
+            content: "▸";
+            color: #165DFF;
             font-weight: bold;
             position: absolute;
             left: 0;
         }
 
         .item {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .title-row {
             font-weight: 600;
             display: flex;
             justify-content: space-between;
-            color: #444;
+            color: #2A2A2A;
         }
 
         .time {
-            color: #7BA3FF;
-            font-weight: normal;
+            color: #165DFF;
+            font-weight: 500;
         }
 
         .sub {
-            color: #888;
+            color: #666;
             font-size: 14px;
             margin: 4px 0 8px;
         }
 
-        /* 证书 */
-        .cert-grid {
+        /* 证书/作品网格：灵动布局 */
+        .cert-grid,
+        .portfolio-grid,
+        .video-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 18px;
         }
+        .cert-grid { grid-template-columns: repeat(2, 1fr); }
+        .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+        .video-grid { grid-template-columns: repeat(2, 1fr); }
 
-        .cert {
-            background: white;
-            border-radius: 16px;
-            height: 150px;
+        /* 图片/视频卡片 */
+        .cert,
+        .portfolio-item,
+        .video-item {
+            background: #fff;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.35s ease;
         }
 
-        .cert img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .cert:hover {
-            transform: scale(1.03);
-        }
-
-        /* 作品集 */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 16px;
-            height: 180px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-            transition: 0.3s;
-        }
-
+        .cert img,
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-4px);
-        }
-
-        /* 视频 */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-top: 10px;
-        }
-
-        .video-item {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
 
         video {
@@ -242,12 +241,19 @@
             display: block;
         }
 
-        /* 音频 */
+        /* 悬停缩放动画 */
+        .cert:hover,
+        .portfolio-item:hover,
+        .video-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* 音频模块 */
         .audio-box {
-            background: white;
-            border-radius: 16px;
-            padding: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin-top: 10px;
         }
 
@@ -255,10 +261,11 @@
             width: 100%;
         }
 
+        /* 页脚 */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #999;
+            padding: 50px 20px;
+            color: #888;
             font-size: 14px;
         }
     </style>
@@ -281,6 +288,7 @@
     <img src="avatar.jpg" class="avatar" alt="头像">
     <h1>曾诗雅</h1>
     <p>国际经济与贸易｜本科｜广州</p>
+    <p>跨境电商 | 外贸运营 | 市场调研</p>
     <p>电话：16769902045｜邮箱：shiloh16769902045@163.com</p>
 </section>
 
@@ -290,7 +298,7 @@
     <h2 class="title">关于我</h2>
     <div class="card">
         <p>沉稳专注，细节把控力强，执行高效，具备扎实的国贸专业能力。</p>
-        <p style="margin-top:10px;">热爱创作、设计与新媒体运营，持续通过实战项目积累跨境电商、外贸单证、市场调研等领域经验，目标成为复合型国贸人才。</p>
+        <p style="margin-top:10px;">热爱跨境电商与外贸实操，擅长新媒体运营、市场调研、单证制作，致力于成为全球化复合型外贸人才。</p>
     </div>
 </section>
 
@@ -411,14 +419,19 @@
 
 </div>
 
-<footer>© 2026 曾诗雅 Personal Website</footer>
+<footer>© 2026 曾诗雅 跨境电商外贸个人主页</footer>
 
 <script>
+    // 滚动动画
     const sections = document.querySelectorAll('.section');
-    const ob = new IntersectionObserver(e => {
-        e.forEach(i => i.isIntersecting && i.target.classList.add('show'));
-    },{threshold:0.1});
-    sections.forEach(s => ob.observe(s));
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
 </script>
 
 </body>
