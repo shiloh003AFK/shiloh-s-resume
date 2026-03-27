@@ -17,21 +17,11 @@
 
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background: url("background.jpg") center/cover fixed;
-            background-color: #f0f7ff;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0f0ff 100%);
             color: #1E293B;
             line-height: 1.8;
             position: relative;
             overflow-x: hidden;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(240,247,255,0.85);
-            z-index: -1;
         }
 
         nav {
@@ -72,6 +62,8 @@
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             border-radius: 0 0 50px 50px;
             margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
         }
 
         .avatar {
@@ -83,11 +75,49 @@
             box-shadow: 0 8px 30px rgba(59,130,246,0.15);
             margin-bottom: 20px;
             animation: float 3.5s infinite ease-in-out;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #bfdbfe, #93c5fd);
         }
 
         @keyframes float {
             0%,100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
+        }
+
+        .hero-text-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            z-index: 1;
+            pointer-events: none;
+            padding: 0 20px;
+        }
+
+        .en-text {
+            font-size: 52px;
+            font-weight: 700;
+            color: rgba(59, 130, 246, 0.15);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 12px;
+            white-space: nowrap;
+        }
+
+        .cn-text {
+            font-size: 16px;
+            color: rgba(30, 64, 175, 0.2);
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto;
+            white-space: nowrap;
+            animation: textScroll 12s linear infinite;
+        }
+
+        @keyframes textScroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
         .hero h1 {
@@ -96,12 +126,16 @@
             font-weight: 700;
             margin-bottom: 10px;
             font-family: 'Poppins', sans-serif;
+            position: relative;
+            z-index: 2;
         }
 
         .hero p {
             color: #475569;
             font-size: 16px;
             margin-bottom: 6px;
+            position: relative;
+            z-index: 2;
         }
 
         .container {
@@ -132,7 +166,6 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* 柔和渐变蓝色卡片（不深、字体清晰）*/
         .card {
             background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 22px;
@@ -192,7 +225,6 @@
             margin: 4px 0 10px;
         }
 
-        /* 作品集图片强制显示（修复版）*/
         .cert-grid,
         .portfolio-grid,
         .video-grid {
@@ -206,29 +238,18 @@
         .cert,
         .portfolio-item,
         .video-item {
-            background: #ffffff;
+            background: linear-gradient(135deg, #bfdbfe, #93c5fd);
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(59,130,246,0.08);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.1);
             transition: 0.35s;
             min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        /* 强制图片铺满 */
-        .cert img,
-        .portfolio-item img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            display: block !important;
-        }
-
-        video {
-            width: 100%;
-            display: block;
+            color: #1e40af;
+            font-weight: 500;
+            font-size: 18px;
         }
 
         .cert:hover,
@@ -273,7 +294,12 @@
 </nav>
 
 <section class="hero" id="home">
-    <img src="avatar.jpg" class="avatar" alt="头像">
+    <div class="hero-text-animation">
+        <div class="en-text">Hi, I'm Shiloh</div>
+        <div class="cn-text">欢迎访问我的个人网页，在这里你可以看到我的教育背景，项目经验以及个人技能等一些信息，请接着往下看吧。</div>
+    </div>
+
+    <div class="avatar"></div>
     <h1>曾诗雅</h1>
     <p>国际经济与贸易｜本科｜广州</p>
     <p>电话：16769902045｜邮箱：shiloh16769902045@163.com</p>
@@ -293,12 +319,12 @@
     <h2 class="title">专业技能</h2>
     <div class="card">
         <ul>
-            <li>办公软件：Word / Excel / PPT / Outlook 熟练</li>
+            <li>办公软件：Word / Excel / PPT / Outlook</li>
             <li>数据处理：SPSS、VOSviewer 可视化分析</li>
             <li>设计剪辑：剪映、PS、CDR、Canva</li>
-            <li>专业能力：外贸单证、市场调研、SWOT 分析</li>
+            <li>专业能力：外贸单证、市场调研</li>
             <li>跨境电商：平台运营、社媒营销、选品上架</li>
-            <li>英语能力：四级、BEC 中级、外贸英语函电</li>
+            <li>英语能力：四级、BEC 中级</li>
             <li>AI工具：ChatGPT、DeepSeek、Gemini、Pitch、Midjourney、Sora、即梦、可灵</li>
         </ul>
     </div>
@@ -369,28 +395,28 @@
 <section class="section" id="cert">
     <h2 class="title">证书与获奖证明</h2>
     <div class="cert-grid">
-        <div class="cert"><img src="cert1.jpg" alt="证书1"></div>
-        <div class="cert"><img src="cert2.jpg" alt="证书2"></div>
+        <div class="cert">证书展示</div>
+        <div class="cert">证书展示</div>
     </div>
 </section>
 
 <section class="section" id="portfolio">
     <h2 class="title">作品集（图片）</h2>
-    <div class="portfolio-grid">
-        <div class="portfolio-item"><img src="work1.jpg" alt="作品集1"></div>
-        <div class="portfolio-item"><img src="work2.jpg" alt="作品集2"></div>
-        <div class="portfolio-item"><img src="work3.jpg" alt="作品集3"></div>
-    </div>
+<div class="portfolio-grid">
+    <div class="portfolio-item"><img src="work1.jpg" alt="作品1" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="portfolio-item"><img src="work2.jpg" alt="作品2" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="portfolio-item"><img src="work3.jpg" alt="作品3" style="width:100%;height:100%;object-fit:cover;"></div>
+</div>
 
     <h2 class="title" style="margin-top:45px;">视频展示</h2>
     <div class="video-grid">
-        <div class="video-item"><video controls src="video1.mp4"></video></div>
-        <div class="video-item"><video controls src="video2.mp4"></video></div>
+        <div class="video-item">视频 1</div>
+        <div class="video-item">视频 2</div>
     </div>
 
     <h2 class="title" style="margin-top:45px;">英文自我介绍（音频）</h2>
     <div class="audio-box">
-        <audio controls src="intro.mp3">
+        <audio controls>
     </div>
 </section>
 
