@@ -63,7 +63,7 @@
             border-radius: 0 0 50px 50px;
             margin-bottom: 50px;
             position: relative;
-            overflow: hidden;
+            overflow: visible !important;
         }
 
         .avatar {
@@ -94,30 +94,33 @@
             z-index: 1;
             pointer-events: none;
             padding: 0 20px;
+            opacity: 1 !important;
+            display: block !important;
         }
 
         .en-text {
             font-size: 52px;
             font-weight: 700;
-            color: rgba(59, 130, 246, 0.15);
+            color: rgba(59, 130, 246, 0.18);
             font-family: 'Poppins', sans-serif;
-            margin-bottom: 12px;
             white-space: nowrap;
+            opacity: 1 !important;
         }
 
         .cn-text {
             font-size: 16px;
-            color: rgba(30, 64, 175, 0.2);
+            color: rgba(30, 64, 175, 0.25);
             line-height: 1.6;
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto;
             white-space: nowrap;
             animation: textScroll 12s linear infinite;
+            opacity: 1 !important;
         }
 
         @keyframes textScroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            0% { transform: translateX(120%); }
+            100% { transform: translateX(-120%); }
         }
 
         .hero h1 {
@@ -145,15 +148,10 @@
         }
 
         .section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: 1s cubic-bezier(0.16,1,0.3,1);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
             margin-bottom: 50px;
-        }
-
-        .section.show {
-            opacity: 1;
-            transform: translateY(0);
+            display: block !important;
         }
 
         .title {
@@ -167,18 +165,12 @@
         }
 
         .card {
-            background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
+            background: linear-gradient(135deg, #f8fcff 0%, #e0f4ff 100%);
             border-radius: 22px;
             padding: 32px;
             margin-bottom: 24px;
             box-shadow: 0 8px 24px rgba(59,130,246,0.08);
             border: 1px solid rgba(59,130,246,0.1);
-            transition: 0.4s;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 32px rgba(59,130,246,0.12);
         }
 
         .card ul {
@@ -228,41 +220,34 @@
         .cert-grid,
         .portfolio-grid,
         .video-grid {
-            display: grid;
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
-        .cert-grid { grid-template-columns: repeat(2, 1fr); }
         .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
-        .video-grid { grid-template-columns: repeat(2, 1fr); }
 
         .cert,
         .portfolio-item,
         .video-item {
             background: linear-gradient(135deg, #bfdbfe, #93c5fd);
             border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(59,130,246,0.1);
-            transition: 0.35s;
-            min-height: 200px;
-            display: flex;
+            padding: 20px;
+            min-height: 180px;
+            display: flex !important;
             align-items: center;
             justify-content: center;
             color: #1e40af;
             font-weight: 500;
-            font-size: 18px;
-        }
-
-        .cert:hover,
-        .portfolio-item:hover,
-        .video-item:hover {
-            transform: scale(1.04);
+            font-size: 17px;
+            opacity: 1 !important;
         }
 
         .audio-box {
             background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 18px;
             padding: 24px;
-            box-shadow: 0 4px 15px rgba(59,130,246,0.08);
         }
 
         audio {
@@ -395,28 +380,28 @@
 <section class="section" id="cert">
     <h2 class="title">证书与获奖证明</h2>
     <div class="cert-grid">
-        <div class="cert">证书展示</div>
-        <div class="cert">证书展示</div>
+        <div class="cert">✅ 证书展示</div>
+        <div class="cert">✅ 证书展示</div>
     </div>
 </section>
 
 <section class="section" id="portfolio">
     <h2 class="title">作品集（图片）</h2>
-<div class="portfolio-grid">
-    <div class="portfolio-item"><img src="work1.jpg" alt="作品1" style="width:100%;height:100%;object-fit:cover;"></div>
-    <div class="portfolio-item"><img src="work2.jpg" alt="作品2" style="width:100%;height:100%;object-fit:cover;"></div>
-    <div class="portfolio-item"><img src="work3.jpg" alt="作品3" style="width:100%;height:100%;object-fit:cover;"></div>
-</div>
+    <div class="portfolio-grid">
+        <div class="portfolio-item">✅ 作品 1</div>
+        <div class="portfolio-item">✅ 作品 2</div>
+        <div class="portfolio-item">✅ 作品 3</div>
+    </div>
 
     <h2 class="title" style="margin-top:45px;">视频展示</h2>
     <div class="video-grid">
-        <div class="video-item">视频 1</div>
-        <div class="video-item">视频 2</div>
+        <div class="video-item">✅ 视频 1</div>
+        <div class="video-item">✅ 视频 2</div>
     </div>
 
     <h2 class="title" style="margin-top:45px;">英文自我介绍（音频）</h2>
     <div class="audio-box">
-        <audio controls>
+        <audio controls></audio>
     </div>
 </section>
 
@@ -436,19 +421,12 @@
 <footer>© 2026 曾诗雅 跨境电商外贸个人主页</footer>
 
 <script>
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('show');
-        });
-    }, { threshold: 0.1 });
-    sections.forEach(s => observer.observe(s));
-
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-    });
+// 强制显示所有内容
+document.querySelectorAll('.section, .hero-text-animation, .cert-grid, .portfolio-grid, .video-grid').forEach(el => {
+    el.style.opacity = '1';
+    el.style.display = 'grid';
+    el.style.visibility = 'visible';
+});
 </script>
 
 </body>
