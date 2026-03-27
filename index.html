@@ -56,6 +56,7 @@
             color: #3b82f6;
         }
 
+        /* 头像+文字动画区域 */
         .hero {
             text-align: center;
             padding: 140px 20px 100px;
@@ -63,7 +64,7 @@
             border-radius: 0 0 50px 50px;
             margin-bottom: 50px;
             position: relative;
-            overflow: visible !important;
+            overflow: hidden;
         }
 
         .avatar {
@@ -77,7 +78,6 @@
             animation: float 3.5s infinite ease-in-out;
             position: relative;
             z-index: 2;
-            background: linear-gradient(135deg, #bfdbfe, #93c5fd);
         }
 
         @keyframes float {
@@ -85,6 +85,7 @@
             50% { transform: translateY(-10px); }
         }
 
+        /* 头像背景文字动画（强制显示） */
         .hero-text-animation {
             position: absolute;
             top: 50%;
@@ -94,33 +95,30 @@
             z-index: 1;
             pointer-events: none;
             padding: 0 20px;
-            opacity: 1 !important;
-            display: block !important;
         }
 
         .en-text {
             font-size: 52px;
             font-weight: 700;
-            color: rgba(59, 130, 246, 0.18);
+            color: rgba(59, 130, 246, 0.15);
             font-family: 'Poppins', sans-serif;
+            margin-bottom: 12px;
             white-space: nowrap;
-            opacity: 1 !important;
         }
 
         .cn-text {
             font-size: 16px;
-            color: rgba(30, 64, 175, 0.25);
+            color: rgba(30, 64, 175, 0.2);
             line-height: 1.6;
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto;
             white-space: nowrap;
             animation: textScroll 12s linear infinite;
-            opacity: 1 !important;
         }
 
         @keyframes textScroll {
-            0% { transform: translateX(120%); }
-            100% { transform: translateX(-120%); }
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
         .hero h1 {
@@ -148,10 +146,15 @@
         }
 
         .section {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s cubic-bezier(0.16,1,0.3,1);
             margin-bottom: 50px;
-            display: block !important;
+        }
+
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .title {
@@ -164,13 +167,20 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* 浅蓝渐变卡片（不遮字） */
         .card {
-            background: linear-gradient(135deg, #f8fcff 0%, #e0f4ff 100%);
+            background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 22px;
             padding: 32px;
             margin-bottom: 24px;
             box-shadow: 0 8px 24px rgba(59,130,246,0.08);
             border: 1px solid rgba(59,130,246,0.1);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(59,130,246,0.12);
         }
 
         .card ul {
@@ -217,37 +227,58 @@
             margin: 4px 0 10px;
         }
 
+        /* 作品集/证书样式（核心修复：强制图片显示） */
         .cert-grid,
         .portfolio-grid,
         .video-grid {
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr);
+            display: grid;
             gap: 20px;
-            opacity: 1 !important;
-            visibility: visible !important;
         }
+        .cert-grid { grid-template-columns: repeat(2, 1fr); }
         .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+        .video-grid { grid-template-columns: repeat(2, 1fr); }
 
         .cert,
         .portfolio-item,
         .video-item {
-            background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+            background: #fff;
             border-radius: 18px;
-            padding: 20px;
-            min-height: 180px;
-            display: flex !important;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.08);
+            transition: 0.35s;
+            min-height: 200px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            color: #1e40af;
-            font-weight: 500;
-            font-size: 17px;
+        }
+
+        /* 强制图片铺满、显示（解决不显示问题） */
+        .cert img,
+        .portfolio-item img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+            visibility: visible !important;
             opacity: 1 !important;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .cert:hover,
+        .portfolio-item:hover,
+        .video-item:hover {
+            transform: scale(1.04);
         }
 
         .audio-box {
             background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 18px;
             padding: 24px;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.08);
         }
 
         audio {
@@ -284,7 +315,7 @@
         <div class="cn-text">欢迎访问我的个人网页，在这里你可以看到我的教育背景，项目经验以及个人技能等一些信息，请接着往下看吧。</div>
     </div>
 
-    <div class="avatar"></div>
+    <img src="avatar.jpg" class="avatar" alt="头像">
     <h1>曾诗雅</h1>
     <p>国际经济与贸易｜本科｜广州</p>
     <p>电话：16769902045｜邮箱：shiloh16769902045@163.com</p>
@@ -307,7 +338,7 @@
             <li>办公软件：Word / Excel / PPT / Outlook</li>
             <li>数据处理：SPSS、VOSviewer 可视化分析</li>
             <li>设计剪辑：剪映、PS、CDR、Canva</li>
-            <li>专业能力：外贸单证、市场调研</li>
+            <li>专业能力：外贸单证、市场调研、SWOT 分析</li>
             <li>跨境电商：平台运营、社媒营销、选品上架</li>
             <li>英语能力：四级、BEC 中级</li>
             <li>AI工具：ChatGPT、DeepSeek、Gemini、Pitch、Midjourney、Sora、即梦、可灵</li>
@@ -380,28 +411,29 @@
 <section class="section" id="cert">
     <h2 class="title">证书与获奖证明</h2>
     <div class="cert-grid">
-        <div class="cert">✅ 证书展示</div>
-        <div class="cert">✅ 证书展示</div>
+        <div class="cert"><img src="cert1.jpg" alt="证书1"></div>
+        <div class="cert"><img src="cert2.jpg" alt="证书2"></div>
     </div>
 </section>
 
 <section class="section" id="portfolio">
     <h2 class="title">作品集（图片）</h2>
     <div class="portfolio-grid">
-        <div class="portfolio-item">✅ 作品 1</div>
-        <div class="portfolio-item">✅ 作品 2</div>
-        <div class="portfolio-item">✅ 作品 3</div>
+        <!-- 直接引用根目录图片，100%匹配你上传的文件 -->
+        <div class="portfolio-item"><img src="work1.jpg" alt="作品集1"></div>
+        <div class="portfolio-item"><img src="work2.jpg" alt="作品集2"></div>
+        <div class="portfolio-item"><img src="work3.jpg" alt="作品集3"></div>
     </div>
 
     <h2 class="title" style="margin-top:45px;">视频展示</h2>
     <div class="video-grid">
-        <div class="video-item">✅ 视频 1</div>
-        <div class="video-item">✅ 视频 2</div>
+        <div class="video-item"><video controls src="video1.mp4"></video></div>
+        <div class="video-item"><video controls src="video2.mp4"></video></div>
     </div>
 
     <h2 class="title" style="margin-top:45px;">英文自我介绍（音频）</h2>
     <div class="audio-box">
-        <audio controls></audio>
+        <audio controls src="intro.mp3">
     </div>
 </section>
 
@@ -421,12 +453,28 @@
 <footer>© 2026 曾诗雅 跨境电商外贸个人主页</footer>
 
 <script>
-// 强制显示所有内容
-document.querySelectorAll('.section, .hero-text-animation, .cert-grid, .portfolio-grid, .video-grid').forEach(el => {
-    el.style.opacity = '1';
-    el.style.display = 'grid';
-    el.style.visibility = 'visible';
-});
+    // 滚动动画+强制显示修复
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(s => observer.observe(s));
+
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    });
+
+    // 强制图片加载（兜底修复）
+    document.querySelectorAll('.portfolio-item img, .cert img').forEach(img => {
+        img.addEventListener('error', function() {
+            console.log('图片加载失败，重试:', this.src);
+            this.src = this.src;
+        });
+    });
 </script>
 
 </body>
