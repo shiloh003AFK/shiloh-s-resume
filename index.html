@@ -38,7 +38,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.92);
             backdrop-filter: blur(12px);
             padding: 18px 0;
             text-align: center;
@@ -49,7 +49,7 @@
 
         nav.scrolled {
             padding: 12px 0;
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.98);
         }
 
         nav a {
@@ -132,8 +132,9 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* 柔和渐变蓝色卡片（不深、字体清晰）*/
         .card {
-            background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+            background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 22px;
             padding: 32px;
             margin-bottom: 24px;
@@ -191,7 +192,7 @@
             margin: 4px 0 10px;
         }
 
-        /* 作品集/证书样式（修复图片显示问题） */
+        /* 作品集图片强制显示（修复版）*/
         .cert-grid,
         .portfolio-grid,
         .video-grid {
@@ -205,24 +206,24 @@
         .cert,
         .portfolio-item,
         .video-item {
-            background: #fff;
+            background: #ffffff;
             border-radius: 18px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(59,130,246,0.08);
             transition: 0.35s;
-            /* 修复图片高度问题 */
             min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        /* 强制图片铺满 */
         .cert img,
         .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
         }
 
         video {
@@ -237,7 +238,7 @@
         }
 
         .audio-box {
-            background: linear-gradient(135deg, #fff 0%, #eff6ff 100%);
+            background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 18px;
             padding: 24px;
             box-shadow: 0 4px 15px rgba(59,130,246,0.08);
@@ -376,7 +377,6 @@
 <section class="section" id="portfolio">
     <h2 class="title">作品集（图片）</h2>
     <div class="portfolio-grid">
-        <!-- 修复图片路径，确保100%显示 -->
         <div class="portfolio-item"><img src="work1.jpg" alt="作品集1"></div>
         <div class="portfolio-item"><img src="work2.jpg" alt="作品集2"></div>
         <div class="portfolio-item"><img src="work3.jpg" alt="作品集3"></div>
