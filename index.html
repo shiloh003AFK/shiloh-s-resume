@@ -63,7 +63,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 60px;
+            gap: 80px;
             flex-wrap: wrap;
             text-align: center;
         }
@@ -97,6 +97,7 @@
             transform: translateX(-60px);
             animation: slideIn 1.2s ease-out forwards;
             animation-delay: 1s;
+            flex: 0 0 auto;
         }
 
         @keyframes slideIn {
@@ -106,9 +107,9 @@
             }
         }
 
-        /* 右侧中文：两行排版+逐字打字机+延迟1.5秒 */
+        /* 右侧中文：两行排版+逐字打字机+延迟1.5秒+加宽容器 */
         .hero-right {
-            max-width: 500px;
+            flex: 0 0 550px;
             text-align: left;
             font-size: 17px;
             line-height: 1.8;
@@ -123,6 +124,7 @@
             border-right: 2px solid #3b82f6;
             width: 0;
             color: #333;
+            margin-bottom: 4px;
         }
 
         .typing-line1 {
@@ -134,7 +136,7 @@
         .typing-line2 {
             animation: typing 3s steps(35, end) forwards,
                        blink 0.7s step-end infinite;
-            animation-delay: 4.5s; /* 第一行打完再打第二行 */
+            animation-delay: 4.5s;
         }
 
         @keyframes typing {
@@ -152,6 +154,7 @@
             flex-direction: column;
             align-items: center;
             gap: 12px;
+            flex: 0 0 auto;
         }
 
         .hero-info h1 {
