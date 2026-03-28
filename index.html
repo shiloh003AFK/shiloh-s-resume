@@ -106,26 +106,35 @@
             }
         }
 
-        /* 右侧中文：更晚出现，逐字打字机 */
+        /* 右侧中文：两行排版+逐字打字机+延迟1.5秒 */
         .hero-right {
-            max-width: 460px;
+            max-width: 500px;
             text-align: left;
             font-size: 17px;
             line-height: 1.8;
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        .typing {
+        .typing-line1, .typing-line2 {
             display: block;
             overflow: hidden;
             white-space: nowrap;
             border-right: 2px solid #3b82f6;
             width: 0;
             color: #333;
-            animation: typing 6s steps(70, end) forwards,
+        }
+
+        .typing-line1 {
+            animation: typing 3s steps(35, end) forwards,
                        blink 0.7s step-end infinite;
-            /* 页面稳定 → 等1秒 → 再等0.5秒才开始打字 */
             animation-delay: 1.5s;
+        }
+
+        .typing-line2 {
+            animation: typing 3s steps(35, end) forwards,
+                       blink 0.7s step-end infinite;
+            animation-delay: 4.5s; /* 第一行打完再打第二行 */
         }
 
         @keyframes typing {
@@ -330,9 +339,8 @@
     </div>
 
     <div class="hero-right">
-        <div class="typing">
-            欢迎访问我的个人网页，在这里你可以看到我的教育背景、项目经验以及个人技能等信息，请接着往下看吧。
-        </div>
+        <div class="typing-line1">欢迎访问我的个人网页，在这里你可以看到我的教育背景、项目经验</div>
+        <div class="typing-line2">以及个人技能等信息，请接着往下看吧。</div>
     </div>
 </section>
 
