@@ -61,11 +61,47 @@
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             border-radius: 0 0 50px 50px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* 左侧英文：页面稳1秒后滑入 */
+        .hero-left {
+            font-size: 46px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-60px);
+            animation: slideIn 1.2s ease-out forwards;
+            animation-delay: 1s;
+            flex: 0 0 auto;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 中间头像+信息：绝对居中 */
+        .hero-center {
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 30px;
             text-align: center;
+            gap: 12px;
+            flex: 0 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .avatar {
@@ -76,83 +112,11 @@
             border: 4px solid #fff;
             box-shadow: 0 8px 30px rgba(59,130,246,0.15);
             animation: float 3.5s infinite ease-in-out;
-            z-index: 2;
-            margin: 0 auto;
         }
 
         @keyframes float {
             0%,100% { transform: translateY(0); }
             50%  { transform: translateY(-10px); }
-        }
-
-        .hero-left {
-            font-size: 46px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(90deg, #1e293b, #475569);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            white-space: nowrap;
-            opacity: 0;
-            animation: slideIn 1.2s ease-out forwards;
-            animation-delay: 1s;
-            text-align: center;
-            width: 100%;
-        }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .hero-right {
-            max-width: 550px;
-            text-align: center;
-            font-size: 17px;
-            line-height: 1.8;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            margin: 0 auto;
-        }
-
-        .typing-line1, .typing-line2 {
-            display: block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #3b82f6;
-            width: 0;
-            color: #333;
-            margin: 0 auto 4px;
-        }
-
-        .typing-line1 {
-            animation: typing 3s steps(35, end) forwards, blink 0.7s step-end infinite;
-            animation-delay: 1.5s;
-        }
-
-        .typing-line2 {
-            animation: typing 3s steps(35, end) forwards, blink 0.7s step-end infinite;
-            animation-delay: 4.5s;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to   { width: 100%; }
-        }
-
-        @keyframes blink {
-            from,to { border-color: transparent; }
-            50%     { border-color: #3b82f6; }
-        }
-
-        .hero-center {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 12px;
-            width: 100%;
         }
 
         .hero-info h1 {
@@ -169,6 +133,48 @@
             color: #475569;
             font-size: 16px;
             text-align: center;
+        }
+
+        /* 右侧中文：两行排版+逐字打字机+延迟1.5秒 */
+        .hero-right {
+            flex: 0 0 550px;
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.8;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .typing-line1, .typing-line2 {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #3b82f6;
+            width: 0;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .typing-line1 {
+            animation: typing 3s steps(35, end) forwards,
+                       blink 0.7s step-end infinite;
+            animation-delay: 1.5s;
+        }
+
+        .typing-line2 {
+            animation: typing 3s steps(35, end) forwards,
+                       blink 0.7s step-end infinite;
+            animation-delay: 4.5s;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to   { width: 100%; }
+        }
+
+        @keyframes blink {
+            from,to { border-color: transparent; }
+            50%     { border-color: #3b82f6; }
         }
 
         .container {
