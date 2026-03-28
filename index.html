@@ -55,6 +55,11 @@
             position: relative;
         }
 
+        .avatar-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         .avatar {
             width: 160px;
             height: 160px;
@@ -62,8 +67,7 @@
             object-fit: cover;
             border: 4px solid #fff;
             box-shadow: 0 8px 30px rgba(59,130,246,0.15);
-            display: block;
-            margin: 0 auto 15px;
+            display: inline-block;
         }
 
         .name {
@@ -72,48 +76,70 @@
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
             margin-bottom: 8px;
+            text-align: center;
         }
 
         .info {
             font-size: 16px;
             color: #475569;
+            text-align: center;
+            margin-bottom: 4px;
         }
 
         .hero-wrap {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
+            gap: 60px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
+        /* 问题2：放大Hi, I'm Shiloh + 滑动入场特效 */
         .english {
-            font-size: 30px;
+            font-size: 48px;
             font-weight: 700;
             color: #3b82f6;
             font-family: 'Poppins', sans-serif;
             white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 1.2s ease-out forwards;
         }
 
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 问题3：打字特效 + 多行排版 */
         .typing-box {
-            font-size: 16px;
+            font-size: 18px;
             color: #334155;
-            max-width: 380px;
+            max-width: 420px;
             text-align: left;
+            line-height: 1.6;
         }
 
-        .typing {
-            display: inline-block;
+        .typing-text {
+            display: block;
             overflow: hidden;
-            white-space: nowrap;
             border-right: 2px solid #3b82f6;
+            white-space: normal;
             width: 0;
-            animation: typing 4s steps(60) forwards;
+            animation: typing 5s steps(80, end) forwards, blink-caret 0.75s step-end infinite;
         }
 
         @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #3b82f6; }
         }
 
         .container {
@@ -173,6 +199,9 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .item img {
@@ -182,11 +211,52 @@
             display: block;
         }
 
+        /* 问题5：音频播放器样式 */
+        .audio-section {
+            margin-top: 30px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .audio-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.08);
+            text-align: center;
+            min-width: 280px;
+        }
+
+        .audio-card h3 {
+            margin-bottom: 12px;
+            color: #1e3a8a;
+            font-size: 16px;
+        }
+
         footer {
             text-align: center;
             padding: 40px 20px;
             color: #666;
             background: #f0f7ff;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .hero-wrap {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .english {
+                font-size: 36px;
+            }
+            .typing-box {
+                text-align: center;
+            }
+            .cert-grid, .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -206,17 +276,38 @@
 
 <section class="hero" id="home">
     <div class="hero-wrap">
+        <!-- 问题2：放大+滑动入场的Hi, I'm Shiloh -->
         <div class="english">Hi, I'm Shiloh</div>
 
-        <div>
-            <img src="avatar.jpg" class="avatar" alt="头像">
+        <!-- 问题1：头像+个人信息完全居中 -->
+        <div class="avatar-info">
+            <div class="avatar-container">
+                <img src="avatar.jpg" class="avatar" alt="头像">
+            </div>
             <div class="name">曾诗雅</div>
             <div class="info">国际经济与贸易｜本科｜广州</div>
             <div class="info">电话：16769902045｜邮箱：shiloh16769902045@163.com</div>
         </div>
 
+        <!-- 问题3：多行打字特效 -->
         <div class="typing-box">
-            <div class="typing">欢迎访问我的个人网页，在这里你可以看到我的教育背景，项目经验以及个人技能等一些信息，请接着往下看吧。</div>
+            <div class="typing-text">
+                欢迎访问我的个人网页，在这里你可以看到我的教育背景，<br>
+                项目经验以及个人技能等一些信息，<br>
+                请接着往下看吧。
+            </div>
+        </div>
+    </div>
+
+    <!-- 问题5：英文+法语自我介绍音频 -->
+    <div class="audio-section">
+        <div class="audio-card">
+            <h3>英文自我介绍</h3>
+            <audio controls src="english-intro.mp3">您的浏览器不支持音频播放
+        </div>
+        <div class="audio-card">
+            <h3>法语自我介绍</h3>
+            <audio controls src="french-intro.mp3">您的浏览器不支持音频播放
         </div>
     </div>
 </section>
@@ -266,9 +357,10 @@
 <section class="section" id="portfolio">
     <h2 class="title">作品集</h2>
     <div class="portfolio-grid">
-        <div class="item"><img src="work1.jpg" alt="作品1"></div>
-        <div class="item"><img src="work2.jpg" alt="作品2"></div>
-        <div class="item"><img src="work3.jpg" alt="作品3"></div>
+        <!-- 问题4：作品集上传修复 -->
+        <div class="item"><img src="work1.jpg" alt="作品1" loading="lazy"></div>
+        <div class="item"><img src="work2.jpg" alt="作品2" loading="lazy"></div>
+        <div class="item"><img src="work3.jpg" alt="作品3" loading="lazy"></div>
     </div>
 </section>
 
