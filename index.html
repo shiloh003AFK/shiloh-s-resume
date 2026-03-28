@@ -84,7 +84,7 @@
             50%  { transform: translateY(-10px); }
         }
 
-        /* 左边英文：延迟出现 + 滑入 */
+        /* 左侧英文：页面稳1秒后滑入 */
         .hero-left {
             font-size: 46px;
             font-weight: 700;
@@ -94,9 +94,9 @@
             -webkit-text-fill-color: transparent;
             white-space: nowrap;
             opacity: 0;
-            transform: translateX(-50px);
+            transform: translateX(-60px);
             animation: slideIn 1.2s ease-out forwards;
-            animation-delay: 0.8s;
+            animation-delay: 1s;
         }
 
         @keyframes slideIn {
@@ -106,14 +106,13 @@
             }
         }
 
-        /* 右边中文：逐字打字机 + 延迟出现 */
+        /* 右侧中文：更晚出现，逐字打字机 */
         .hero-right {
-            max-width: 440px;
+            max-width: 460px;
             text-align: left;
             font-size: 17px;
             line-height: 1.8;
             font-weight: 500;
-            letter-spacing: 0.4px;
         }
 
         .typing {
@@ -123,9 +122,10 @@
             border-right: 2px solid #3b82f6;
             width: 0;
             color: #333;
-            animation: typing 5.5s steps(65, end) forwards,
+            animation: typing 6s steps(70, end) forwards,
                        blink 0.7s step-end infinite;
-            animation-delay: 1.2s;
+            /* 页面稳定 → 等1秒 → 再等0.5秒才开始打字 */
+            animation-delay: 1.5s;
         }
 
         @keyframes typing {
