@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曾诗雅 | 跨境电商外贸个人主页</title>
+    <title>曾诗雅 | 跨境电商·外贸个人主页</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@
             background: linear-gradient(135deg, #f0f7ff 0%, #e0f0ff 100%);
             color: #1E293B;
             line-height: 1.8;
-            position: relative;
             overflow-x: hidden;
         }
 
@@ -57,18 +56,16 @@
         }
 
         .hero {
-            text-align: center;
-            padding: 140px 20px 120px;
+            min-height: 100vh;
+            padding: 100px 20px;
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             border-radius: 0 0 50px 50px;
-            margin-bottom: 50px;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 50px;
+            gap: 60px;
             flex-wrap: wrap;
-            min-height: 80vh;
+            text-align: center;
         }
 
         .avatar {
@@ -80,25 +77,26 @@
             box-shadow: 0 8px 30px rgba(59,130,246,0.15);
             animation: float 3.5s infinite ease-in-out;
             z-index: 2;
-            display: block;
-            margin: 0 auto 15px;
         }
 
         @keyframes float {
             0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50%  { transform: translateY(-10px); }
         }
 
+        /* 左边英文：延迟出现 + 滑入 */
         .hero-left {
             font-size: 46px;
             font-weight: 700;
-            color: #2563eb;
             font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             white-space: nowrap;
             opacity: 0;
-            transform: translateX(-60px);
-            animation: slideIn 1.4s ease-out forwards;
-            animation-delay: 0.2s;
+            transform: translateX(-50px);
+            animation: slideIn 1.2s ease-out forwards;
+            animation-delay: 0.8s;
         }
 
         @keyframes slideIn {
@@ -108,61 +106,57 @@
             }
         }
 
+        /* 右边中文：逐字打字机 + 延迟出现 */
         .hero-right {
-            font-size: 17px;
-            background: linear-gradient(90deg, #111827, #374151);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            max-width: 430px;
+            max-width: 440px;
             text-align: left;
+            font-size: 17px;
             line-height: 1.8;
-            font-family: 'Noto Sans SC', sans-serif;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
         }
 
         .typing {
             display: block;
             overflow: hidden;
-            white-space: normal;
-            border-right: 2px solid #2563eb;
+            white-space: nowrap;
+            border-right: 2px solid #3b82f6;
             width: 0;
-            animation: typing 5s steps(90, end) forwards, blink 0.7s step-end infinite;
-            animation-delay: 1.6s;
+            color: #333;
+            animation: typing 5.5s steps(65, end) forwards,
+                       blink 0.7s step-end infinite;
+            animation-delay: 1.2s;
         }
 
         @keyframes typing {
             from { width: 0; }
-            to { width: 100%; }
+            to   { width: 100%; }
         }
 
         @keyframes blink {
-            from,to { border-color:transparent; }
-            50% { border-color:#2563eb; }
+            from,to { border-color: transparent; }
+            50%     { border-color: #3b82f6; }
         }
 
         .hero-center {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            gap: 12px;
         }
 
         .hero-info h1 {
             font-size: 38px;
-            background: linear-gradient(90deg, #1e1b4b, #3b82f6);
+            background: linear-gradient(90deg, #1e3a8a, #2563eb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
-            margin-bottom: 8px;
             font-family: 'Poppins', sans-serif;
         }
 
         .hero-info p {
-            color: #334155;
+            color: #475569;
             font-size: 16px;
-            margin-bottom: 4px;
         }
 
         .container {
@@ -172,8 +166,6 @@
         }
 
         .section {
-            opacity: 1;
-            transform: translateY(0);
             margin-bottom: 50px;
         }
 
@@ -272,10 +264,10 @@
 
         .cert img,
         .portfolio-item img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            display: block !important;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         video {
@@ -339,8 +331,7 @@
 
     <div class="hero-right">
         <div class="typing">
-            欢迎访问我的个人网页，在这里你可以看到我的教育背景、项目经验<br>
-            以及个人技能等信息，请接着往下看吧。
+            欢迎访问我的个人网页，在这里你可以看到我的教育背景、项目经验以及个人技能等信息，请接着往下看吧。
         </div>
     </div>
 </section>
