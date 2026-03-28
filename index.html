@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曾诗雅 | 跨境电商·外贸个人主页</title>
+    <title>曾诗雅 | 跨境电商外贸个人主页</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -66,13 +66,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
+            min-height: 80vh;
         }
 
         .avatar {
-            width: 160px;
-            height: 160px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #fff;
@@ -80,7 +81,7 @@
             animation: float 3.5s infinite ease-in-out;
             z-index: 2;
             display: block;
-            margin: 0 auto;
+            margin: 0 auto 15px;
         }
 
         @keyframes float {
@@ -89,14 +90,15 @@
         }
 
         .hero-left {
-            font-size: 44px;
+            font-size: 46px;
             font-weight: 700;
-            color: #3b82f6;
+            color: #2563eb;
             font-family: 'Poppins', sans-serif;
             white-space: nowrap;
             opacity: 0;
-            transform: translateX(-40px);
-            animation: slideIn 1.2s ease-out forwards;
+            transform: translateX(-60px);
+            animation: slideIn 1.4s ease-out forwards;
+            animation-delay: 0.2s;
         }
 
         @keyframes slideIn {
@@ -107,20 +109,26 @@
         }
 
         .hero-right {
-            font-size: 16px;
-            color: #334155;
-            max-width: 420px;
+            font-size: 17px;
+            background: linear-gradient(90deg, #111827, #374151);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 430px;
             text-align: left;
-            line-height: 1.7;
+            line-height: 1.8;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .typing {
             display: block;
             overflow: hidden;
             white-space: normal;
-            border-right: 2px solid #3b82f6;
+            border-right: 2px solid #2563eb;
             width: 0;
-            animation: typing 5.5s steps(100, end) forwards, blink 0.7s step-end infinite;
+            animation: typing 5s steps(90, end) forwards, blink 0.7s step-end infinite;
+            animation-delay: 1.6s;
         }
 
         @keyframes typing {
@@ -130,29 +138,31 @@
 
         @keyframes blink {
             from,to { border-color:transparent; }
-            50% { border-color:#3b82f6; }
+            50% { border-color:#2563eb; }
         }
 
-        .hero-info {
-            position: relative;
-            z-index: 3;
+        .hero-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-top: 20px;
-            width: 100%;
         }
 
         .hero-info h1 {
             font-size: 38px;
-            color: #1e40af;
+            background: linear-gradient(90deg, #1e1b4b, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-family: 'Poppins', sans-serif;
         }
 
         .hero-info p {
-            color: #475569;
+            color: #334155;
             font-size: 16px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .container {
@@ -317,7 +327,8 @@
 
 <section class="hero" id="home">
     <div class="hero-left">Hi, I'm Shiloh</div>
-    <div>
+
+    <div class="hero-center">
         <img src="avatar.jpg" class="avatar" alt="头像">
         <div class="hero-info">
             <h1>曾诗雅</h1>
@@ -325,11 +336,11 @@
             <p>电话：16769902045｜邮箱：shiloh16769902045@163.com</p>
         </div>
     </div>
+
     <div class="hero-right">
         <div class="typing">
-            欢迎访问我的个人网页，<br>
-            在这里你可以看到我的教育背景、项目经验以及个人技能等信息，<br>
-            请接着往下看吧。
+            欢迎访问我的个人网页，在这里你可以看到我的教育背景、项目经验<br>
+            以及个人技能等信息，请接着往下看吧。
         </div>
     </div>
 </section>
