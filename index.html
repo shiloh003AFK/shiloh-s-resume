@@ -17,7 +17,7 @@
 
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background: linear-gradient(135deg, #f0f7ff 0%, #e0f0ff 100%);
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f4ff 100%);
             color: #1E293B;
             line-height: 1.8;
             overflow-x: hidden;
@@ -74,7 +74,7 @@
             top: 42%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 70px;
+            font-size: clamp(40px, 8vw, 70px);
             font-weight: 700;
             color: rgba(59, 130, 246, 0.08);
             white-space: nowrap;
@@ -100,8 +100,8 @@
         }
 
         .avatar {
-            width: 170px;
-            height: 170px;
+            width: clamp(140px, 30vw, 170px);
+            height: clamp(140px, 30vw, 170px);
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #fff;
@@ -115,7 +115,7 @@
         }
 
         .hero-info h1 {
-            font-size: 38px;
+            font-size: clamp(28px, 6vw, 38px);
             background: linear-gradient(90deg, #1e3a8a, #2563eb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -125,13 +125,13 @@
 
         .hero-info p {
             color: #475569;
-            font-size: 16px;
+            font-size: clamp(14px, 3vw, 16px);
         }
 
         .hero-text {
-            max-width: 650px;
+            max-width: clamp(300px, 90vw, 650px);
             text-align: left;
-            font-size: 17px;
+            font-size: clamp(15px, 3vw, 17px);
             line-height: 1.8;
             font-weight: 500;
             letter-spacing: 0.5px;
@@ -180,7 +180,7 @@
         }
 
         .title {
-            font-size: 24px;
+            font-size: clamp(20px, 5vw, 24px);
             color: #1e3a8a;
             margin-bottom: 24px;
             padding-left: 16px;
@@ -192,7 +192,7 @@
         .card {
             background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 22px;
-            padding: 32px;
+            padding: clamp(20px, 5vw, 32px);
             margin-bottom: 24px;
             box-shadow: 0 8px 24px rgba(59,130,246,0.08);
             border: 1px solid rgba(59,130,246,0.1);
@@ -214,6 +214,7 @@
             padding-left: 20px;
             position: relative;
             color: #1e293b;
+            font-size: clamp(14px, 3vw, 16px);
         }
 
         .card li::before {
@@ -234,7 +235,9 @@
             display: flex;
             justify-content: space-between;
             color: #1e3a8a;
-            font-size: 17px;
+            font-size: clamp(15px, 3vw, 17px);
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .time {
@@ -244,17 +247,26 @@
 
         .sub {
             color: #475569;
-            font-size: 14px;
+            font-size: clamp(14px, 3vw, 14px);
             margin: 4px 0 10px;
         }
 
+        /* 自适应网格布局（适配所有屏幕） */
         .cert-grid, .portfolio-grid {
             display: grid;
-            gap: 20px;
+            gap: clamp(15px, 3vw, 20px);
             margin-top: 20px;
         }
-        .cert-grid { grid-template-columns: repeat(2, 1fr); }
-        .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+
+        /* 证书网格：大屏2列，小屏1列 */
+        .cert-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        /* 作品集网格：大屏3列，平板2列，手机1列 */
+        .portfolio-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
 
         .cert, .portfolio-item {
             background: #fff;
@@ -262,7 +274,7 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(59,130,246,0.08);
             transition: 0.35s;
-            min-height: 250px;
+            min-height: clamp(200px, 40vw, 250px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -277,12 +289,13 @@
 
         .cert:hover, .portfolio-item:hover {
             transform: scale(1.04);
+            box-shadow: 0 8px 20px rgba(59,130,246,0.15);
         }
 
         .audio-box {
             background: linear-gradient(135deg, #f8fcff 0%, #e6f4ff 100%);
             border-radius: 18px;
-            padding: 24px;
+            padding: clamp(20px, 5vw, 24px);
             box-shadow: 0 4px 15px rgba(59,130,246,0.08);
             margin-bottom: 20px;
         }
@@ -293,11 +306,23 @@
 
         footer {
             text-align: center;
-            padding: 60px 20px;
+            padding: clamp(40px, 8vw, 60px) 20px;
             color: #64748b;
             background: linear-gradient(180deg, #f0f7ff 0%, #dbeafe 100%);
             border-radius: 50px 50px 0 0;
             margin-top: 40px;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+
+        /* 响应式导航（手机端适配） */
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 8px;
+                font-size: 13px;
+            }
+            .hero {
+                padding: 80px 15px;
+            }
         }
     </style>
 </head>
@@ -344,7 +369,7 @@
     <div class="card">
         <ul>
             <li>办公软件：Word / Excel / PPT / Outlook</li>
-            <li>数据处理：SPSS、VOSviewer 可视化分析</li>
+            <li>数据处理：SPSS、VOSviewer 可视化</li>
             <li>设计剪辑：剪映、PS、CDR、Canva</li>
             <li>专业能力：外贸单证、市场调研、SWOT 分析</li>
             <li>跨境电商：平台运营、社媒营销、选品上架</li>
