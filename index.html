@@ -251,7 +251,7 @@
             margin: 4px 0 10px;
         }
 
-        .cert-grid, .media-grid {
+        .cert-grid, .portfolio-grid {
             display: grid;
             gap: clamp(15px, 3vw, 20px);
             margin-top: 20px;
@@ -261,36 +261,32 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         }
 
-        .media-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .portfolio-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
 
-        .cert, .media-box {
+        .cert, .portfolio-item {
             background: #fff;
             border-radius: 18px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(59,130,246,0.08);
             transition: 0.35s;
+            min-height: clamp(200px, 40vw, 250px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .cert img{
-            width:100%;
-            height:auto;
-            object-fit:cover;
-        }
-
-        .cert:hover, .media-box:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(59,130,246,0.12);
-        }
-
-        video, audio {
+        .cert img, .portfolio-item img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
-        .audio-card {
-            padding: 20px;
+        .cert:hover, .portfolio-item:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 20px rgba(59,130,246,0.15);
         }
 
         footer {
@@ -314,7 +310,6 @@
         }
     </style>
 </head>
-
 <body>
 
 <nav id="navbar">
@@ -325,7 +320,7 @@
     <a href="#project">项目</a>
     <a href="#practice">实践</a>
     <a href="#cert">证书</a>
-    <a href="#media">影音展示</a>
+    <a href="#portfolio">作品</a>
 </nav>
 
 <section class="hero" id="home">
@@ -441,30 +436,13 @@
     </div>
 </section>
 
-<!-- ===================== 影音展示区（视频 + 双语音频） ===================== -->
-<section class="section" id="media">
-    <h2 class="title">影音展示</h2>
-    <div class="media-grid">
-        <div class="media-box">
-            <video controls poster="">
-                <source src="video1.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="media-box">
-            <video controls poster="">
-                <source src="video2.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
-    <div class="card audio-card" style="margin-top:20px;">
-        <h3 style="margin-bottom:10px; color:#1e3a8a;">英文自我介绍</h3>
-        <audio controls src="english.mp3"></audio>
-    </div>
-
-    <div class="card audio-card">
-        <h3 style="margin-bottom:10px; color:#1e3a8a;">法语自我介绍</h3>
-        <audio controls src="french.mp3"></audio>
+<!-- ✅ 你的作品集图片链接已全部填好 ✅ -->
+<section class="section" id="portfolio">
+    <h2 class="title">作品集（图片）</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-item"><img src="https://pic1.imgdb.cn/item/69c8e51bbccb565842927e63.png" alt="作品集1"></div>
+        <div class="portfolio-item"><img src="https://pic1.imgdb.cn/item/69c8e536bccb565842927f05.jpg" alt="作品集2"></div>
+        <div class="portfolio-item"><img src="https://pic1.imgdb.cn/item/69c8e55cbccb565842927fd6.jpg" alt="作品集3"></div>
     </div>
 </section>
 
