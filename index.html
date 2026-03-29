@@ -64,17 +64,47 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             text-align: center;
+            position: relative;
         }
 
-        /* 头像+信息 绝对居中 固定不动 */
+        /* 英文：在头像背后、打字出现、滑动、不遮挡、固定 */
+        .hero-english {
+            position: absolute;
+            top: 42%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 70px;
+            font-weight: 700;
+            color: rgba(59, 130, 246, 0.08);
+            white-space: nowrap;
+            z-index: 1;
+            opacity: 0;
+            animation: englishSlide 2.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes englishSlide {
+            0% {
+                opacity: 0;
+                transform: translate(-150%, -50%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* 头像 + 信息 永久居中 不遮挡 */
         .hero-center {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 12px;
+            z-index: 2;
+            position: relative;
         }
 
         .avatar {
@@ -106,16 +136,16 @@
             font-size: 16px;
         }
 
-        /* 右侧文字区域：居中 + 分两行打字 + 延迟1秒 */
-        .hero-right {
-            width: 100%;
-            max-width: 600px;
+        /* 下方两行打字文字：稳定1秒后逐字出现 */
+        .hero-text {
+            max-width: 650px;
             text-align: left;
             font-size: 17px;
             line-height: 1.8;
             font-weight: 500;
             letter-spacing: 0.5px;
-            margin: 0 auto;
+            margin-top: 10px;
+            z-index: 2;
         }
 
         .typing-line1, .typing-line2 {
@@ -128,16 +158,14 @@
             margin-bottom: 5px;
         }
 
-        /* 第一行：页面稳定1秒后开始打字 */
         .typing-line1 {
-            animation: typing 3.5s steps(38, end) forwards, blink 0.7s step-end infinite;
+            animation: typing 3.2s steps(38, end) forwards, blink 0.7s step-end infinite;
             animation-delay: 1s;
         }
 
-        /* 第二行：第一行打完后继续打字 */
         .typing-line2 {
-            animation: typing 3.5s steps(38, end) forwards, blink 0.7s step-end infinite;
-            animation-delay: 4.5s;
+            animation: typing 3.2s steps(38, end) forwards, blink 0.7s step-end infinite;
+            animation-delay: 4s;
         }
 
         @keyframes typing {
@@ -309,7 +337,10 @@
 </nav>
 
 <section class="hero" id="home">
-    <!-- 头像+信息 完全居中 固定不动 -->
+    <!-- 英文：头像背后 滑动出现 不遮挡 -->
+    <div class="hero-english">Hi, I'm Shiloh</div>
+
+    <!-- 头像 + 信息 永久居中 -->
     <div class="hero-center">
         <img src="avatar.jpg" class="avatar" alt="头像">
         <div class="hero-info">
@@ -319,8 +350,8 @@
         </div>
     </div>
 
-    <!-- 头像下方：分两行打字特效 -->
-    <div class="hero-right">
+    <!-- 下方两行打字文字 -->
+    <div class="hero-text">
         <div class="typing-line1">欢迎访问我的个人网页，在这里你可以看到我的教育背景、项目经验</div>
         <div class="typing-line2">以及个人技能等信息，请接着往下看吧。</div>
     </div>
@@ -352,7 +383,7 @@
 </section>
 
 <section class="section" id="education">
-    <h2 class="title">教育经历</h2>
+    <h2 class="title">教育经历</h>
     <div class="card">
         <div class="item">
             <div class="title-row">
