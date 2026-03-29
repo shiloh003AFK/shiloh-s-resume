@@ -61,36 +61,20 @@
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             border-radius: 0 0 50px 50px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            position: relative;
+            gap: 30px;
+            text-align: center;
         }
 
-        /* 左侧英文 */
-        .hero-left {
-            font-size: 46px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(90deg, #1e293b, #475569);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            white-space: nowrap;
-            flex: 0 0 auto;
-        }
-
-        /* 中间头像+信息：永久固定居中 */
+        /* 头像+信息 绝对居中 固定不动 */
         .hero-center {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
             gap: 12px;
-            flex: 0 0 auto;
-            position: relative;
-            z-index: 2;
         }
 
         .avatar {
@@ -115,23 +99,23 @@
             -webkit-text-fill-color: transparent;
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
-            text-align: center;
         }
 
         .hero-info p {
             color: #475569;
             font-size: 16px;
-            text-align: center;
         }
 
-        /* 右侧文字：分两行 + 延迟1秒 + 逐字打字 */
+        /* 右侧文字区域：居中 + 分两行打字 + 延迟1秒 */
         .hero-right {
-            flex: 0 0 550px;
+            width: 100%;
+            max-width: 600px;
             text-align: left;
             font-size: 17px;
             line-height: 1.8;
             font-weight: 500;
             letter-spacing: 0.5px;
+            margin: 0 auto;
         }
 
         .typing-line1, .typing-line2 {
@@ -141,20 +125,18 @@
             border-right: 2px solid #3b82f6;
             width: 0;
             color: #333;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
         /* 第一行：页面稳定1秒后开始打字 */
         .typing-line1 {
-            animation: typing 3.5s steps(36, end) forwards,
-                       blink 0.7s step-end infinite;
+            animation: typing 3.5s steps(38, end) forwards, blink 0.7s step-end infinite;
             animation-delay: 1s;
         }
 
-        /* 第二行：第一行打完后接着打字 */
+        /* 第二行：第一行打完后继续打字 */
         .typing-line2 {
-            animation: typing 3.5s steps(36, end) forwards,
-                       blink 0.7s step-end infinite;
+            animation: typing 3.5s steps(38, end) forwards, blink 0.7s step-end infinite;
             animation-delay: 4.5s;
         }
 
@@ -327,9 +309,7 @@
 </nav>
 
 <section class="hero" id="home">
-    <div class="hero-left">Hi, I'm Shiloh</div>
-
-    <!-- 头像+信息 永久居中 -->
+    <!-- 头像+信息 完全居中 固定不动 -->
     <div class="hero-center">
         <img src="avatar.jpg" class="avatar" alt="头像">
         <div class="hero-info">
@@ -339,7 +319,7 @@
         </div>
     </div>
 
-    <!-- 右侧分两行打字特效 -->
+    <!-- 头像下方：分两行打字特效 -->
     <div class="hero-right">
         <div class="typing-line1">欢迎访问我的个人网页，在这里你可以看到我的教育背景、项目经验</div>
         <div class="typing-line2">以及个人技能等信息，请接着往下看吧。</div>
