@@ -70,7 +70,7 @@
             overflow: hidden;
         }
 
-        /* 头像外层动态漩涡背景 */
+        /* 头像外层容器 */
         .avatar-wrapper {
             position: relative;
             width: clamp(140px, 30vw, 170px);
@@ -79,27 +79,27 @@
             z-index: 2;
         }
 
-        /* 动态漩涡背景图 */
+        /* 动态水流漩涡背景 */
         .avatar-bg {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 160%;
-            height: 160%;
-            background-image: url('https://pic.1tu.co/do/09/11/28/091128284776659197.jpg');
+            width: 180%;
+            height: 180%;
+            background-image: url('https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/0cd458dbde25452c94039d751c390961.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 50%;
-            animation: vortexRotate 20s linear infinite;
-            opacity: 0.25;
+            animation: waterFlow 25s linear infinite;
+            opacity: 0.22;
             z-index: -1;
         }
 
-        /* 漩涡旋转动画 */
-        @keyframes vortexRotate {
-            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.08); }
+        /* 水流旋转 + 轻微缩放流动 */
+        @keyframes waterFlow {
+            0%   { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            50%  { transform: translate(-50%, -50%) rotate(180deg) scale(1.05); }
             100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
         }
 
