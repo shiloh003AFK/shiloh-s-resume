@@ -70,15 +70,37 @@
             overflow: hidden;
         }
 
-        /* 粒子特效Canvas容器 */
-        .particle-bg {
+        /* 头像外层动态漩涡背景 */
+        .avatar-wrapper {
+            position: relative;
+            width: clamp(140px, 30vw, 170px);
+            height: clamp(140px, 30vw, 170px);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* 动态漩涡背景图 */
+        .avatar-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160%;
+            height: 160%;
+            background-image: url('https://pic.1tu.co/do/09/11/28/091128284776659197.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            animation: vortexRotate 20s linear infinite;
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        /* 漩涡旋转动画 */
+        @keyframes vortexRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.08); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
         }
 
         .hero-english {
@@ -112,15 +134,15 @@
         }
 
         .avatar {
-            width: clamp(140px, 30vw, 170px);
-            height: clamp(140px, 30vw, 170px);
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #fff;
             box-shadow: 0 8px 30px rgba(59,130,246,0.15);
             animation: float 3.5s infinite ease-in-out;
             position: relative;
-            z-index: 3;
+            z-index: 2;
         }
 
         @keyframes float {
@@ -343,11 +365,12 @@
 </nav>
 
 <section class="hero" id="home">
-    <!-- 粒子特效Canvas -->
-    <canvas class="particle-bg" id="particleCanvas"></canvas>
     <div class="hero-english">Hi, I'm Shiloh</div>
     <div class="hero-center">
-        <img src="avatar.jpg" class="avatar" alt="头像">
+        <div class="avatar-wrapper">
+            <div class="avatar-bg"></div>
+            <img src="avatar.jpg" class="avatar" alt="头像">
+        </div>
         <div class="hero-info">
             <h1>曾诗雅</h1>
             <p>国际经济与贸易｜本科｜广州</p>
@@ -476,143 +499,6 @@
         if (window.scrollY > 50) nav.classList.add('scrolled');
         else nav.classList.remove('scrolled');
     });
-
-    // ==================== 创造亚当手指粒子特效 ====================
-    const canvas = document.getElementById('particleCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animationId;
-
-    // 自适应Canvas尺寸
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        initParticles();
-    }
-
-    // 粒子类
-    class Particle {
-        constructor(x, y, targetX, targetY) {
-            this.x = x;
-            this.y = y;
-            this.targetX = targetX;
-            this.targetY = targetY;
-            this.vx = (Math.random() - 0.5) * 2;
-            this.vy = (Math.random() - 0.5) * 2;
-            this.size = Math.random() * 2 + 1;
-            this.speed = Math.random() * 0.5 + 0.2;
-            this.color = `rgba(59, 130, 246, ${Math.random() * 0.6 + 0.3})`;
-        }
-
-        update() {
-            // 向目标位置移动
-            const dx = this.targetX - this.x;
-            const dy = this.targetY - this.y;
-            this.x += dx * this.speed;
-            this.y += dy * this.speed;
-            this.vx *= 0.98;
-            this.vy *= 0.98;
-            this.x += this.vx;
-            this.y += this.vy;
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
-    }
-
-    // 生成《创造亚当》手指轮廓的目标点
-    function getHandTargetPoints() {
-        const points = [];
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const scale = Math.min(canvas.width, canvas.height) * 0.35;
-
-        // 上帝的手（右侧）
-        const godHand = [
-            [0.8, 0.45], [0.78, 0.46], [0.75, 0.47], [0.72, 0.48], [0.68, 0.5],
-            [0.65, 0.52], [0.63, 0.55], [0.62, 0.58], [0.63, 0.62], [0.65, 0.65],
-            [0.67, 0.68], [0.69, 0.7], [0.71, 0.72], [0.73, 0.73], [0.75, 0.73],
-            [0.77, 0.72], [0.78, 0.7], [0.77, 0.68], [0.76, 0.66], [0.75, 0.64],
-            [0.74, 0.62], [0.73, 0.6], [0.72, 0.58], [0.71, 0.56], [0.7, 0.54],
-            [0.69, 0.52], [0.68, 0.5], [0.67, 0.48], [0.66, 0.46], [0.65, 0.44],
-            [0.64, 0.42], [0.63, 0.4], [0.62, 0.38], [0.61, 0.36], [0.6, 0.34],
-            [0.59, 0.32], [0.58, 0.3], [0.57, 0.28], [0.56, 0.26], [0.55, 0.24]
-        ];
-
-        // 亚当的手（左侧）
-        const adamHand = [
-            [0.45, 0.45], [0.47, 0.46], [0.5, 0.47], [0.53, 0.48], [0.57, 0.5],
-            [0.6, 0.52], [0.62, 0.55], [0.63, 0.58], [0.62, 0.62], [0.6, 0.65],
-            [0.58, 0.68], [0.56, 0.7], [0.54, 0.72], [0.52, 0.73], [0.5, 0.73],
-            [0.48, 0.72], [0.47, 0.7], [0.48, 0.68], [0.49, 0.66], [0.5, 0.64],
-            [0.51, 0.62], [0.52, 0.6], [0.53, 0.58], [0.54, 0.56], [0.55, 0.54],
-            [0.56, 0.52], [0.57, 0.5], [0.58, 0.48], [0.59, 0.46], [0.6, 0.44],
-            [0.61, 0.42], [0.62, 0.4], [0.63, 0.38], [0.64, 0.36], [0.65, 0.34],
-            [0.66, 0.32], [0.67, 0.3], [0.68, 0.28], [0.69, 0.26], [0.7, 0.24]
-        ];
-
-        // 转换为实际坐标
-        [...godHand, ...adamHand].forEach(([x, y]) => {
-            points.push({
-                x: centerX + (x - 0.5) * scale,
-                y: centerY + (y - 0.5) * scale
-            });
-        });
-
-        return points;
-    }
-
-    // 初始化粒子
-    function initParticles() {
-        particles = [];
-        const targetPoints = getHandTargetPoints();
-        const particleCount = 800;
-
-        for (let i = 0; i < particleCount; i++) {
-            const target = targetPoints[Math.floor(Math.random() * targetPoints.length)];
-            const startX = Math.random() * canvas.width;
-            const startY = Math.random() * canvas.height;
-            particles.push(new Particle(startX, startY, target.x, target.y));
-        }
-    }
-
-    // 动画循环
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // 绘制粒子
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-
-        // 绘制指尖交互连线
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const scale = Math.min(canvas.width, canvas.height) * 0.35;
-        const godTipX = centerX + (0.55 - 0.5) * scale;
-        const godTipY = centerY + (0.24 - 0.5) * scale;
-        const adamTipX = centerX + (0.45 - 0.5) * scale;
-        const adamTipY = centerY + (0.45 - 0.5) * scale;
-
-        ctx.beginPath();
-        ctx.moveTo(adamTipX, adamTipY);
-        ctx.lineTo(godTipX, godTipY);
-        ctx.strokeStyle = `rgba(59, 130, 246, ${0.3 + Math.sin(Date.now() * 0.002) * 0.2})`;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        animationId = requestAnimationFrame(animate);
-    }
-
-    // 启动特效
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    animate();
 </script>
 
 </body>
