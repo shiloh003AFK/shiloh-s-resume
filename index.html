@@ -70,7 +70,6 @@
             overflow: hidden;
         }
 
-        /* 动态特效画布 - 底层，绝不挡内容 */
         #waterCanvas {
             position: absolute;
             top: 0;
@@ -78,7 +77,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.25;
+            opacity: 0.12; /* 更透明！ */
             pointer-events: none;
         }
 
@@ -477,12 +476,8 @@
         else nav.classList.remove('scrolled');
     });
 
-    // 核心特效：水下图片流动旋转 + 小鱼循环游动
     const canvas = document.getElementById('waterCanvas');
     const ctx = canvas.getContext('2d');
-    const bgImg = new Image();
-    // 图片路径：和html同文件夹，直接写文件名即可
-    bgImg.src = 'water-bg.jpg';
     let time = 0;
     let fishes = [];
 
@@ -492,63 +487,55 @@
         initFishes();
     }
 
-    // 初始化小鱼
     function initFishes() {
-        fishes = Array(30).fill().map(() => ({
+        fishes = Array(28).fill().map(() => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            speed: Math.random() * 0.7 + 0.3,
+            speed: Math.random() * 0.45 + 0.25,
             angle: Math.random() * Math.PI * 2,
-            size: Math.random() * 4 + 2
+            size: Math.random() * 3.5 + 1.8
         }));
     }
 
-    // 动画主循环
     function animate() {
-        time += 0.006;
+        time += 0.004;
         const w = canvas.width;
         const h = canvas.height;
         ctx.clearRect(0, 0, w, h);
 
-        // 1. 绘制流动旋转的水下背景图
-        if (bgImg.complete) {
-            ctx.save();
-            // 以中心为原点，缓慢旋转+缩放，模拟漩涡流动
-            ctx.translate(w/2, h/2);
-            const rotate = Math.sin(time * 0.3) * 0.15;
-            const scale = 1.05 + Math.sin(time * 0.5) * 0.05;
-            ctx.rotate(rotate);
-            ctx.scale(scale, scale);
-            // 绘制背景图，铺满画布
-            const imgSize = Math.max(w, h) * 1.2;
-            ctx.drawImage(bgImg, -imgSize/2, -imgSize/2, imgSize, imgSize);
-            ctx.restore();
-        }
+        ctx.save();
+        ctx.translate(w/2, h/2);
+        const rotate = Math.sin(time * 0.25) * 0.08;
+        const scale = 1.02 + Math.sin(time * 0.35) * 0.025;
+        ctx.rotate(rotate);
+        ctx.scale(scale, scale);
 
-        // 2. 绘制循环游动的小鱼
+        const gradient = ctx.createRadialGradient(0,0,0,0,0,Math.max(w,h)*0.8);
+        gradient.addColorStop(0, 'rgba(80, 150, 255, 0.18)');
+        gradient.addColorStop(1, 'rgba(160, 210, 255, 0.06)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(-w, -h, w*2, h*2);
+        ctx.restore();
+
         fishes.forEach(fish => {
-            // 让小鱼跟着漩涡轨迹游动
-            fish.angle += 0.02 * Math.sin(time * 0.4 + fish.x * 0.01);
+            fish.angle += 0.014 * Math.sin(time * 0.3 + fish.x * 0.008);
             fish.x += Math.cos(fish.angle) * fish.speed;
-            fish.y += Math.sin(fish.angle) * fish.speed * 0.6;
+            fish.y += Math.sin(fish.angle) * fish.speed * 0.55;
 
-            // 边界循环，永不消失
-            if (fish.x < -50) fish.x = w + 50;
-            if (fish.x > w + 50) fish.x = -50;
-            if (fish.y < -50) fish.y = h + 50;
-            if (fish.y > h + 50) fish.y = -50;
+            if (fish.x < -40) fish.x = w + 40;
+            if (fish.x > w + 40) fish.x = -40;
+            if (fish.y < -40) fish.y = h + 40;
+            if (fish.y > h + 40) fish.y = -40;
 
-            // 绘制小鱼
-            ctx.fillStyle = 'rgba(59, 130, 246, 0.35)';
+            ctx.fillStyle = 'rgba(70, 140, 255, 0.24)';
             ctx.beginPath();
-            ctx.ellipse(fish.x, fish.y, fish.size, fish.size * 0.6, fish.angle, 0, Math.PI * 2);
+            ctx.ellipse(fish.x, fish.y, fish.size, fish.size * 0.55, fish.angle, 0, Math.PI * 2);
             ctx.fill();
         });
 
         requestAnimationFrame(animate);
     }
 
-    // 启动动画
     window.addEventListener('load', () => {
         resizeCanvas();
         animate();
