@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曾诗雅 | 跨境电商·外贸个人主页</title>
+    <title>曾诗雅 | 跨境电商外贸个人主页</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -268,6 +268,33 @@
             margin: 4px 0 10px;
         }
 
+        .audio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .audio-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 14px;
+            border: 1px solid rgba(59,130,246,0.15);
+        }
+        .audio-label {
+            font-weight: 600;
+            color: #1e3a8a;
+            min-width: 70px;
+            font-size: 15px;
+        }
+        audio {
+            flex: 1;
+            width: 100%;
+            outline: none;
+        }
+
         .cert-grid, .portfolio-grid {
             display: grid;
             gap: clamp(15px, 3vw, 20px);
@@ -326,6 +353,11 @@
             .hero {
                 padding: 80px 15px;
             }
+            .audio-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -340,6 +372,7 @@
     <a href="#practice">实践</a>
     <a href="#cert">证书</a>
     <a href="#portfolio">作品</a>
+    <a href="#intro">自我介绍</a>
 </nav>
 
 <section class="hero" id="home">
@@ -428,7 +461,6 @@
             </ul>
         </div>
 
-        <!-- 👇 新增：全国高校商务外语综合能力大赛 👇 -->
         <div class="item">
             <div class="title-row">
                 <span>全国高校商务外语综合能力大赛（短视频作品赛项）</span>
@@ -475,6 +507,26 @@
         <div class="portfolio-item"><img src="https://pic1.imgdb.cn/item/69c8e51bbccb565842927e63.png" alt="作品集1"></div>
         <div class="portfolio-item"><img src="https://pic1.imgdb.cn/item/69c8e536bccb565842927f05.jpg" alt="作品集2"></div>
         <div class="portfolio-item"><img src="https://pic1.imgdb.cn/item/69c8e55cbccb565842927fd6.jpg" alt="作品集3"></div>
+    </div>
+</section>
+
+<!-- 👇 自我介绍音频（已放在最底部，音频与index.html同级）👇 -->
+<section class="section" id="intro">
+    <h2 class="title">自我介绍音频</h2>
+    <div class="card">
+        <div class="audio-group">
+            <div class="audio-item">
+                <div class="audio-label">English</div>
+                <audio src="intro-en.m4a" controls preload="metadata" type="audio/mp4">
+            </div>
+            <div class="audio-item">
+                <div class="audio-label">Français</div>
+                <audio src="intro-fr.m4a" controls preload="metadata" type="audio/mp4">
+            </div>
+        </div>
+        <p style="margin-top:16px; color:#64748b; font-size:14px;">
+            💡 点击播放按钮，聆听我的中英/中法双语自我介绍
+        </p>
     </div>
 </section>
 
